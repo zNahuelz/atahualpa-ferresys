@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ad1a9f47c660468c87e837e8d20c829f" Name="Diagram1">
+        <EntityTypeShape EntityType="ATAHUALPA_DBAModel.CLIENTE" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATAHUALPA_DBAModel.COMPROBANTE" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATAHUALPA_DBAModel.PRODUCTO" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATAHUALPA_DBAModel.PROVEEDOR" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATAHUALPA_DBAModel.TIPO_UNIDAD" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATAHUALPA_DBAModel.USUARIO" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="ATAHUALPA_DBAModel.FK_PROD_PROV" ManuallyRouted="false" />
+        <AssociationConnector Association="ATAHUALPA_DBAModel.FK_PROD_UNI" ManuallyRouted="false" />
+        <AssociationConnector Association="ATAHUALPA_DBAModel.COMPRA" ManuallyRouted="false" />
+        <AssociationConnector Association="ATAHUALPA_DBAModel.COMPROBANTE_PROD" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

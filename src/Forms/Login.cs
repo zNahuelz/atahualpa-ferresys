@@ -16,5 +16,20 @@ namespace atahualpa_ferresys
         {
             InitializeComponent();
         }
+
+        private void tReloj_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = "FECHA: " + DateTime.Now.ToShortDateString() + " HORA: " + DateTime.Now.ToString("hh:mm:ss");
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            tReloj.Enabled = true;
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

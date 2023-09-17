@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ATAHUALPA_DBAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_CLI" />
+          </Key>
+          <Property Name="ID_CLI" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRES" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="APELLIDOS" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="DNI" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="FECHA_REGISTRO" Type="date" />
+          <Property Name="ACTIVO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMPRA">
+          <Key>
+            <PropertyRef Name="ID_COMP" />
+            <PropertyRef Name="ID_CLI" />
+          </Key>
+          <Property Name="ID_COMP" Type="int" Nullable="false" />
+          <Property Name="ID_CLI" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMPROBANTE">
+          <Key>
+            <PropertyRef Name="ID_COMP" />
+          </Key>
+          <Property Name="ID_COMP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIPO" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="EMISION" Type="datetime" Nullable="false" />
+          <Property Name="SUBTOTAL" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TOTAL" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IGV" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PAGADO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMPROBANTE_PROD">
+          <Key>
+            <PropertyRef Name="ID_COMP" />
+            <PropertyRef Name="ID_PROD" />
+          </Key>
+          <Property Name="ID_COMP" Type="int" Nullable="false" />
+          <Property Name="ID_PROD" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID_PROD" />
+          </Key>
+          <Property Name="ID_PROD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="255" />
+          <Property Name="PRECIO_COMP" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PRECIO_VENT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="STOCK" Type="int" Nullable="false" />
+          <Property Name="ID_PROV" Type="int" Nullable="false" />
+          <Property Name="UNIDAD" Type="int" Nullable="false" />
+          <Property Name="FECHA_INGRESO" Type="date" />
+          <Property Name="ACTIVO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROVEEDOR">
+          <Key>
+            <PropertyRef Name="ID_PROV" />
+          </Key>
+          <Property Name="ID_PROV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="RUC" Type="varchar" MaxLength="11" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="FECHA_REGISTRO" Type="date" />
+          <Property Name="ACTIVO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPO_UNIDAD">
+          <Key>
+            <PropertyRef Name="ID_UNI" />
+          </Key>
+          <Property Name="ID_UNI" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USR" />
+          </Key>
+          <Property Name="ID_USR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CONTRASENA" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="NOMBRES" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="APELLIDOS" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="FECHA_REGISTRO" Type="date" />
+          <Property Name="ACTIVO" Type="bit" Nullable="false" />
+          <Property Name="PERMISOS" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_COMPRA_CLI">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="COMPRA" Type="Self.COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="ID_CLI" />
+            </Principal>
+            <Dependent Role="COMPRA">
+              <PropertyRef Name="ID_CLI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPRA_COMP">
+          <End Role="COMPROBANTE" Type="Self.COMPROBANTE" Multiplicity="1" />
+          <End Role="COMPRA" Type="Self.COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPROBANTE">
+              <PropertyRef Name="ID_COMP" />
+            </Principal>
+            <Dependent Role="COMPRA">
+              <PropertyRef Name="ID_COMP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CP_COMP">
+          <End Role="COMPROBANTE" Type="Self.COMPROBANTE" Multiplicity="1" />
+          <End Role="COMPROBANTE_PROD" Type="Self.COMPROBANTE_PROD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPROBANTE">
+              <PropertyRef Name="ID_COMP" />
+            </Principal>
+            <Dependent Role="COMPROBANTE_PROD">
+              <PropertyRef Name="ID_COMP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CP_PROD">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="COMPROBANTE_PROD" Type="Self.COMPROBANTE_PROD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="ID_PROD" />
+            </Principal>
+            <Dependent Role="COMPROBANTE_PROD">
+              <PropertyRef Name="ID_PROD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROD_PROV">
+          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDOR">
+              <PropertyRef Name="ID_PROV" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="ID_PROV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROD_UNI">
+          <End Role="TIPO_UNIDAD" Type="Self.TIPO_UNIDAD" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_UNIDAD">
+              <PropertyRef Name="ID_UNI" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="UNIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ATAHUALPA_DBAModelStoreContainer">
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPRA" EntityType="Self.COMPRA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPROBANTE" EntityType="Self.COMPROBANTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPROBANTE_PROD" EntityType="Self.COMPROBANTE_PROD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_UNIDAD" EntityType="Self.TIPO_UNIDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_COMPRA_CLI" Association="Self.FK_COMPRA_CLI">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="COMPRA" EntitySet="COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPRA_COMP" Association="Self.FK_COMPRA_COMP">
+            <End Role="COMPROBANTE" EntitySet="COMPROBANTE" />
+            <End Role="COMPRA" EntitySet="COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CP_COMP" Association="Self.FK_CP_COMP">
+            <End Role="COMPROBANTE" EntitySet="COMPROBANTE" />
+            <End Role="COMPROBANTE_PROD" EntitySet="COMPROBANTE_PROD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CP_PROD" Association="Self.FK_CP_PROD">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="COMPROBANTE_PROD" EntitySet="COMPROBANTE_PROD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROD_PROV" Association="Self.FK_PROD_PROV">
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROD_UNI" Association="Self.FK_PROD_UNI">
+            <End Role="TIPO_UNIDAD" EntitySet="TIPO_UNIDAD" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ATAHUALPA_DBAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_CLI" />
+          </Key>
+          <Property Name="ID_CLI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRES" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDOS" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DNI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" Precision="0" />
+          <Property Name="ACTIVO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="COMPROBANTE" Relationship="Self.COMPRA" FromRole="CLIENTE" ToRole="COMPROBANTE" />
+        </EntityType>
+        <EntityType Name="COMPROBANTE">
+          <Key>
+            <PropertyRef Name="ID_COMP" />
+          </Key>
+          <Property Name="ID_COMP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIPO" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMISION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SUBTOTAL" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TOTAL" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IGV" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PAGADO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.COMPRA" FromRole="COMPROBANTE" ToRole="CLIENTE" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.COMPROBANTE_PROD" FromRole="COMPROBANTE" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID_PROD" />
+          </Key>
+          <Property Name="ID_PROD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PRECIO_COMP" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PRECIO_VENT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="STOCK" Type="Int32" Nullable="false" />
+          <Property Name="ID_PROV" Type="Int32" Nullable="false" />
+          <Property Name="UNIDAD" Type="Int32" Nullable="false" />
+          <Property Name="FECHA_INGRESO" Type="DateTime" Precision="0" />
+          <Property Name="ACTIVO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PROVEEDOR" Relationship="Self.FK_PROD_PROV" FromRole="PRODUCTO" ToRole="PROVEEDOR" />
+          <NavigationProperty Name="TIPO_UNIDAD" Relationship="Self.FK_PROD_UNI" FromRole="PRODUCTO" ToRole="TIPO_UNIDAD" />
+          <NavigationProperty Name="COMPROBANTE" Relationship="Self.COMPROBANTE_PROD" FromRole="PRODUCTO" ToRole="COMPROBANTE" />
+        </EntityType>
+        <EntityType Name="PROVEEDOR">
+          <Key>
+            <PropertyRef Name="ID_PROV" />
+          </Key>
+          <Property Name="ID_PROV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RUC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" Precision="0" />
+          <Property Name="ACTIVO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_PROD_PROV" FromRole="PROVEEDOR" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="TIPO_UNIDAD">
+          <Key>
+            <PropertyRef Name="ID_UNI" />
+          </Key>
+          <Property Name="ID_UNI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_PROD_UNI" FromRole="TIPO_UNIDAD" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USR" />
+          </Key>
+          <Property Name="ID_USR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USUARIO1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CONTRASENA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRES" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDOS" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" Precision="0" />
+          <Property Name="ACTIVO" Type="Boolean" Nullable="false" />
+          <Property Name="PERMISOS" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_PROD_PROV">
+          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDOR">
+              <PropertyRef Name="ID_PROV" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="ID_PROV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROD_UNI">
+          <End Role="TIPO_UNIDAD" Type="Self.TIPO_UNIDAD" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_UNIDAD">
+              <PropertyRef Name="ID_UNI" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="UNIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="COMPRA">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <End Role="COMPROBANTE" Type="Self.COMPROBANTE" Multiplicity="*" />
+        </Association>
+        <Association Name="COMPROBANTE_PROD">
+          <End Role="COMPROBANTE" Type="Self.COMPROBANTE" Multiplicity="*" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ATAHUALPA_DBAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
+          <EntitySet Name="COMPROBANTE" EntityType="Self.COMPROBANTE" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
+          <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" />
+          <EntitySet Name="TIPO_UNIDAD" EntityType="Self.TIPO_UNIDAD" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <AssociationSet Name="FK_PROD_PROV" Association="Self.FK_PROD_PROV">
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROD_UNI" Association="Self.FK_PROD_UNI">
+            <End Role="TIPO_UNIDAD" EntitySet="TIPO_UNIDAD" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="COMPRA" Association="Self.COMPRA">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="COMPROBANTE" EntitySet="COMPROBANTE" />
+          </AssociationSet>
+          <AssociationSet Name="COMPROBANTE_PROD" Association="Self.COMPROBANTE_PROD">
+            <End Role="COMPROBANTE" EntitySet="COMPROBANTE" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ATAHUALPA_DBAModelStoreContainer" CdmEntityContainer="ATAHUALPA_DBAEntities">
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="ATAHUALPA_DBAModel.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="ID_CLI" ColumnName="ID_CLI" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPROBANTE">
+            <EntityTypeMapping TypeName="ATAHUALPA_DBAModel.COMPROBANTE">
+              <MappingFragment StoreEntitySet="COMPROBANTE">
+                <ScalarProperty Name="ID_COMP" ColumnName="ID_COMP" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="EMISION" ColumnName="EMISION" />
+                <ScalarProperty Name="SUBTOTAL" ColumnName="SUBTOTAL" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="IGV" ColumnName="IGV" />
+                <ScalarProperty Name="PAGADO" ColumnName="PAGADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTO">
+            <EntityTypeMapping TypeName="ATAHUALPA_DBAModel.PRODUCTO">
+              <MappingFragment StoreEntitySet="PRODUCTO">
+                <ScalarProperty Name="ID_PROD" ColumnName="ID_PROD" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="PRECIO_COMP" ColumnName="PRECIO_COMP" />
+                <ScalarProperty Name="PRECIO_VENT" ColumnName="PRECIO_VENT" />
+                <ScalarProperty Name="STOCK" ColumnName="STOCK" />
+                <ScalarProperty Name="ID_PROV" ColumnName="ID_PROV" />
+                <ScalarProperty Name="UNIDAD" ColumnName="UNIDAD" />
+                <ScalarProperty Name="FECHA_INGRESO" ColumnName="FECHA_INGRESO" />
+                <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVEEDOR">
+            <EntityTypeMapping TypeName="ATAHUALPA_DBAModel.PROVEEDOR">
+              <MappingFragment StoreEntitySet="PROVEEDOR">
+                <ScalarProperty Name="ID_PROV" ColumnName="ID_PROV" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="RUC" ColumnName="RUC" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_UNIDAD">
+            <EntityTypeMapping TypeName="ATAHUALPA_DBAModel.TIPO_UNIDAD">
+              <MappingFragment StoreEntitySet="TIPO_UNIDAD">
+                <ScalarProperty Name="ID_UNI" ColumnName="ID_UNI" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="ATAHUALPA_DBAModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="ID_USR" ColumnName="ID_USR" />
+                <ScalarProperty Name="USUARIO1" ColumnName="USUARIO" />
+                <ScalarProperty Name="CONTRASENA" ColumnName="CONTRASENA" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+                <ScalarProperty Name="PERMISOS" ColumnName="PERMISOS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="COMPRA" TypeName="ATAHUALPA_DBAModel.COMPRA" StoreEntitySet="COMPRA">
+            <EndProperty Name="CLIENTE">
+              <ScalarProperty Name="ID_CLI" ColumnName="ID_CLI" />
+            </EndProperty>
+            <EndProperty Name="COMPROBANTE">
+              <ScalarProperty Name="ID_COMP" ColumnName="ID_COMP" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="COMPROBANTE_PROD" TypeName="ATAHUALPA_DBAModel.COMPROBANTE_PROD" StoreEntitySet="COMPROBANTE_PROD">
+            <EndProperty Name="COMPROBANTE">
+              <ScalarProperty Name="ID_COMP" ColumnName="ID_COMP" />
+            </EndProperty>
+            <EndProperty Name="PRODUCTO">
+              <ScalarProperty Name="ID_PROD" ColumnName="ID_PROD" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
