@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ATAHUALPA_DBAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ATAHUALPA_DBAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CLIENTE">
           <Key>
             <PropertyRef Name="ID_CLI" />
@@ -54,8 +54,8 @@
           <Property Name="ID_PROD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="DESCRIPCION" Type="varchar" MaxLength="255" />
-          <Property Name="PRECIO_COMP" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="PRECIO_VENT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PRECIO_COMP" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="PRECIO_VENT" Type="decimal" Precision="5" Scale="2" Nullable="false" />
           <Property Name="STOCK" Type="int" Nullable="false" />
           <Property Name="ID_PROV" Type="int" Nullable="false" />
           <Property Name="UNIDAD" Type="int" Nullable="false" />
@@ -204,8 +204,7 @@
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ATAHUALPA_DBAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -245,8 +244,8 @@
           <Property Name="ID_PROD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NOMBRE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="PRECIO_COMP" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="PRECIO_VENT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PRECIO_COMP" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="PRECIO_VENT" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
           <Property Name="STOCK" Type="Int32" Nullable="false" />
           <Property Name="ID_PROV" Type="Int32" Nullable="false" />
           <Property Name="UNIDAD" Type="Int32" Nullable="false" />

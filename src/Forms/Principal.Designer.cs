@@ -95,6 +95,7 @@
             this.btnProductos.Name = "btnProductos";
             this.btnProductos.Size = new System.Drawing.Size(187, 68);
             this.btnProductos.Text = "PRODUCTOS";
+            this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
             // 
             // btnClientes
             // 
@@ -106,6 +107,7 @@
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(187, 68);
             this.btnClientes.Text = "CLIENTES";
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
             // btnProveedores
             // 
@@ -117,6 +119,7 @@
             this.btnProveedores.Name = "btnProveedores";
             this.btnProveedores.Size = new System.Drawing.Size(187, 68);
             this.btnProveedores.Text = "PROVEEDORES";
+            this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
             // 
             // btnComprobantes
             // 
@@ -128,6 +131,7 @@
             this.btnComprobantes.Name = "btnComprobantes";
             this.btnComprobantes.Size = new System.Drawing.Size(187, 68);
             this.btnComprobantes.Text = "COMPROBANTES";
+            this.btnComprobantes.Click += new System.EventHandler(this.btnComprobantes_Click);
             // 
             // toolStripSeparator2
             // 
