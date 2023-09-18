@@ -37,9 +37,15 @@
             this.tpDetalle = new System.Windows.Forms.TabPage();
             this.tpEliminarProducto = new System.Windows.Forms.TabPage();
             this.gbPrincipal = new System.Windows.Forms.GroupBox();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
+            this.cbOpBuscar = new System.Windows.Forms.ComboBox();
+            this.btnResetear = new System.Windows.Forms.Button();
+            this.cbBusquedaAux = new System.Windows.Forms.ComboBox();
+            this.dtpBusqueda = new System.Windows.Forms.DateTimePicker();
             this.tcProductos.SuspendLayout();
             this.tpPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
+            this.gbPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcProductos
@@ -124,6 +130,11 @@
             // 
             // gbPrincipal
             // 
+            this.gbPrincipal.Controls.Add(this.dtpBusqueda);
+            this.gbPrincipal.Controls.Add(this.cbBusquedaAux);
+            this.gbPrincipal.Controls.Add(this.btnResetear);
+            this.gbPrincipal.Controls.Add(this.cbOpBuscar);
+            this.gbPrincipal.Controls.Add(this.txtBusqueda);
             this.gbPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbPrincipal.Location = new System.Drawing.Point(12, 13);
             this.gbPrincipal.Name = "gbPrincipal";
@@ -131,6 +142,53 @@
             this.gbPrincipal.TabIndex = 1;
             this.gbPrincipal.TabStop = false;
             this.gbPrincipal.Text = "HERRAMIENTAS";
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBusqueda.Location = new System.Drawing.Point(10, 62);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(261, 22);
+            this.txtBusqueda.TabIndex = 0;
+            this.txtBusqueda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusqueda_KeyPress);
+            // 
+            // cbOpBuscar
+            // 
+            this.cbOpBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbOpBuscar.FormattingEnabled = true;
+            this.cbOpBuscar.Location = new System.Drawing.Point(10, 21);
+            this.cbOpBuscar.Name = "cbOpBuscar";
+            this.cbOpBuscar.Size = new System.Drawing.Size(261, 24);
+            this.cbOpBuscar.TabIndex = 1;
+            this.cbOpBuscar.SelectedIndexChanged += new System.EventHandler(this.cbOpBuscar_SelectedIndexChanged);
+            // 
+            // btnResetear
+            // 
+            this.btnResetear.Location = new System.Drawing.Point(10, 90);
+            this.btnResetear.Name = "btnResetear";
+            this.btnResetear.Size = new System.Drawing.Size(261, 23);
+            this.btnResetear.TabIndex = 2;
+            this.btnResetear.Text = "RESET";
+            this.btnResetear.UseVisualStyleBackColor = true;
+            this.btnResetear.Click += new System.EventHandler(this.btnResetear_Click);
+            // 
+            // cbBusquedaAux
+            // 
+            this.cbBusquedaAux.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbBusquedaAux.FormattingEnabled = true;
+            this.cbBusquedaAux.Location = new System.Drawing.Point(289, 21);
+            this.cbBusquedaAux.Name = "cbBusquedaAux";
+            this.cbBusquedaAux.Size = new System.Drawing.Size(261, 24);
+            this.cbBusquedaAux.TabIndex = 3;
+            // 
+            // dtpBusqueda
+            // 
+            this.dtpBusqueda.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpBusqueda.Location = new System.Drawing.Point(289, 62);
+            this.dtpBusqueda.Name = "dtpBusqueda";
+            this.dtpBusqueda.Size = new System.Drawing.Size(261, 22);
+            this.dtpBusqueda.TabIndex = 4;
+            this.dtpBusqueda.ValueChanged += new System.EventHandler(this.dtpBusqueda_ValueChanged);
             // 
             // Productos
             // 
@@ -152,6 +210,8 @@
             this.tpPrincipal.ResumeLayout(false);
             this.tpPrincipal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
+            this.gbPrincipal.ResumeLayout(false);
+            this.gbPrincipal.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -166,5 +226,10 @@
         private System.Windows.Forms.TabPage tpEliminarProducto;
         private System.Windows.Forms.DataGridView dgvProductos;
         private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.TextBox txtBusqueda;
+        private System.Windows.Forms.Button btnResetear;
+        private System.Windows.Forms.ComboBox cbOpBuscar;
+        private System.Windows.Forms.ComboBox cbBusquedaAux;
+        private System.Windows.Forms.DateTimePicker dtpBusqueda;
     }
 }
