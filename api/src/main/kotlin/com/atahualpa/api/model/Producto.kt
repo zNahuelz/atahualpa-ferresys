@@ -1,10 +1,6 @@
 package com.atahualpa.api.model
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 import java.util.Date
 
 @Entity(name = "Producto")
@@ -28,4 +24,13 @@ data class Producto(
     val fechaModificacion: Date,
     @Column(nullable = false)
     val activo: Boolean = true,
+    @ManyToOne
+    @JoinColumn(name = "tipo_unidad", nullable = false)
+    val tipoUnidad: TipoUnidad,
+    @ManyToOne
+    @JoinColumn(name = "id_proveedor", nullable = false)
+    val idProveedor: Proveedor,
+
+    @OneToMany(mappedBy = "producto")
+    val detalles: List<DetalleComprobante> = emptyList(),
 )

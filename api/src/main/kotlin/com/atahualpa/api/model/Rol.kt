@@ -13,6 +13,6 @@ data class Rol(
     val nombre: String,
     @CreationTimestamp
     val fechaCreacion: Date,
-    @OneToMany(mappedBy = "rol",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "rol", fetch = FetchType.LAZY)
     val usuarios: Set<Usuario> = emptySet(),
 )

@@ -1,10 +1,6 @@
 package com.atahualpa.api.model
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 import org.hibernate.annotations.CreationTimestamp
 import java.util.Date
 
@@ -17,4 +13,6 @@ data class TipoComprobante(
     val nombre: String,
     @CreationTimestamp
     val fechaCreacion: Date,
+    @OneToMany(mappedBy = "tipoComprobante", fetch = FetchType.LAZY)
+    val comprobantes: Set<Comprobante> = emptySet(),
 )

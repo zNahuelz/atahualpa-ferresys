@@ -1,10 +1,6 @@
 package com.atahualpa.api.model
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 import org.hibernate.annotations.CreationTimestamp
 import java.util.Date
 
@@ -23,5 +19,13 @@ data class Comprobante(
     val igv: Double,
     @Column(nullable = false)
     val pagado: Boolean = false,
-    //TODO Añadir ___>> Relacion tipo de comprobante (bol/fact) - metodo de pago (yape, efectivo)
+    @ManyToOne
+    @JoinColumn(name = "tipo_comprobante", nullable = false)
+    val tipoComprobante: TipoComprobante,
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", nullable = false)
+    val cliente: Cliente,
+
+    @OneToMany(mappedBy = "comprobante")
+    val detalles: List<DetalleComprobante> = emptyList(),
 )
