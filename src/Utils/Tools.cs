@@ -5,6 +5,7 @@ namespace atahualpa_ferresys.Utils
 {
     public class Tools
     {
+        public const string API_URL = "http://localhost:8000/api/";
         public static List<string> ListadoBusquedaProductos = new List<string>()
         {
             "POR NOMBRE","POR DESCRIPCIÓN","POR FECHA DE INGRESO","POR PRESENTACIÓN","POR ID"
