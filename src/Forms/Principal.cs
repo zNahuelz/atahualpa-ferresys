@@ -13,7 +13,7 @@ namespace atahualpa_ferresys.Forms
 {
     public partial class Principal : Form
     {
-        private Productos frmProductos;
+        private frmProducts frmProductos;
         private Proveedores frmProveedores;
         private Comprobantes frmComprobantes;
         private Clientes frmClientes;
@@ -56,7 +56,7 @@ namespace atahualpa_ferresys.Forms
                 case 0:
                     if(frmProductos == null)
                     {
-                        frmProductos = new Productos();
+                        frmProductos = new frmProducts();
                         frmProductos.MdiParent = this;
                         frmProductos.FormClosed += new FormClosedEventHandler(CerrarProductos);
                         frmProductos.Show();

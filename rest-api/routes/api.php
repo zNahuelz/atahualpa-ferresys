@@ -23,4 +23,6 @@ Route::group([
     Route::get('/{id}', [ProductController::class,'getProduct']);
     Route::get('/', [ProductController::class, 'getProducts']);
     Route::get('/paginate', [ProductController::class,'getProductsPaginated']);
+    Route::get('/by_name/{name}', [ProductController::class, 'getProductsByName']);
+    Route::get('/by_desc/{description}',[ProductController::class, 'getProductsByDescription']);
 });

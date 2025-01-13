@@ -1,6 +1,6 @@
 ﻿namespace atahualpa_ferresys.Forms
 {
-    partial class Productos
+    partial class frmProducts
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Productos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProducts));
             this.tcProductos = new System.Windows.Forms.TabControl();
             this.tpPrincipal = new System.Windows.Forms.TabPage();
             this.lblError = new System.Windows.Forms.Label();

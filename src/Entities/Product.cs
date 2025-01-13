@@ -21,7 +21,14 @@ namespace atahualpa_ferresys.Entities
         [JsonProperty("supplier_id")]
         public int SupplierId { get; set; }
         [JsonProperty("unit_type")]
-        public int UnitType { get; set; }
+        public UnitType UnitType { get; set; }
+        [JsonProperty("created_at")]
+        public DateTime CreatedAt { get; set; }
+        [JsonProperty("updated_at")]
+        public DateTime UpdatedAt { get; set; }
+
+
+        public string UnitTypeName { get; set; }
 
     }
 }

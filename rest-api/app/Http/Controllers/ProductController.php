@@ -61,6 +61,18 @@ class ProductController extends Controller
         return response()->json($products);
     }
 
+    public function getProductsByName($name)
+    {
+        $products = Product::with(['supplier','unitType'])->where('name','LIKE','%'.$name.'%')->get();
+        return response()->json($products);
+    }
+
+    public function getProductsByDescription($description)
+    {
+        $products = Product::with(['supplier','unitType'])->where('description','LIKE','%'.$description.'%')->get();
+        return response()->json($products);
+    }
+
     public function getProduct($id)
     {
         if(!is_numeric($id))
