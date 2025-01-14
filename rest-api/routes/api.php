@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UnitTypeController;
 use App\Http\Middleware\GeneralMiddleware;
 use App\Http\Middleware\SellerMiddleware;
 use Illuminate\Http\Request;
@@ -25,4 +27,19 @@ Route::group([
     Route::get('/paginate', [ProductController::class,'getProductsPaginated']);
     Route::get('/by_name/{name}', [ProductController::class, 'getProductsByName']);
     Route::get('/by_desc/{description}',[ProductController::class, 'getProductsByDescription']);
+    Route::get('/by_unit_type/{id}', [ProductController::class, 'getProductsByUnitType']);
+});
+
+Route::group([
+    'prefix' => '/unit_type',
+    'middleware' => SellerMiddleware::class
+], function($router){
+    Route::get('/', [UnitTypeController::class, 'getUnitTypes']);
+});
+
+Route::group([
+    'prefix' => '/supplier',
+    'middleware' => SellerMiddleware::class
+], function($router) {
+    Route::get('/', [SupplierController::class, 'getSuppliers']);
 });

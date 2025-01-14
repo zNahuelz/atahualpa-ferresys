@@ -1,8 +1,12 @@
 ﻿using atahualpa_ferresys.Entities;
+using atahualpa_ferresys.Entities.Validation;
 using atahualpa_ferresys.Services;
 using atahualpa_ferresys.Utils;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -10,8 +14,14 @@ namespace atahualpa_ferresys.Forms
 {
     public partial class frmProducts : Form
     {
+        //TODO -> Revisar...
         public string TextoBusqueda = "";
+        public int selectedUnitType = 0;
+        public bool unitTypesLoaded = false;
+        public bool supplierLoaded = false;
         private readonly ProductService _productService = new ProductService(Tools.API_URL,Tools.JWT_TOKEN);
+        private readonly UnitTypeService _unitTypeService = new UnitTypeService(Tools.API_URL, Tools.JWT_TOKEN);
+        private readonly SupplierService _supplierService = new SupplierService(Tools.API_URL, Tools.JWT_TOKEN);
         public frmProducts()
         {
             InitializeComponent();
@@ -19,9 +29,49 @@ namespace atahualpa_ferresys.Forms
 
         private void Productos_Load(object sender, EventArgs e)
         {
+            FillUnitTypesCb();
+            FillSuppliersCb();
             FillProductsTable(0);
             if(dgvProductos.Rows.Count > 0 ) { lblError.Visible = false; }
             cbOpBuscar.DataSource = Tools.ListadoBusquedaProductos;
+        }
+
+        private async void FillUnitTypesCb()
+        {
+            try
+            {
+                List<UnitType> unitTypes = new List<UnitType>();
+                unitTypes = await _unitTypeService.GetUnitTypes();
+                cbBusquedaAux.DataSource = unitTypes;
+                cbBusquedaAux.DisplayMember = "Name";
+                cbBusquedaAux.ValueMember = "Id";
+
+                cbUnitType.DataSource = unitTypes;
+                cbUnitType.DisplayMember = "Name";
+                cbUnitType.ValueMember = "Id";
+                unitTypesLoaded = true;
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+        }
+
+        public async void FillSuppliersCb()
+        {
+            try
+            {
+                List<Supplier> suppliers = new List<Supplier>();
+                suppliers = await _supplierService.GetSuppliers();
+                cbSupplier.DataSource = suppliers;
+                cbSupplier.DisplayMember = "Name";
+                cbSupplier.ValueMember = "Id";
+                supplierLoaded = true;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
 
         private async void FillProductsTable(int o)
@@ -40,6 +90,7 @@ namespace atahualpa_ferresys.Forms
                         dgvProductos.DataSource = products;
                         lblError.Visible = false;
                         ConfigureTable(dgvProductos);
+                        ManageErrorLabel();
                     break;
                     //Get Products By Name.
                     case 1:
@@ -49,6 +100,7 @@ namespace atahualpa_ferresys.Forms
                         });
                         dgvProductos.DataSource = products;
                         ConfigureTable(dgvProductos);
+                        ManageErrorLabel();
                         break;
                     //Get Products By Description
                     case 2:
@@ -58,12 +110,20 @@ namespace atahualpa_ferresys.Forms
                         });
                         dgvProductos.DataSource = products;
                         ConfigureTable(dgvProductos);
+                        ManageErrorLabel();
                         break;
                     //Get Products By Date
                     case 3:
                         break;
                     //Get Products By Unit Type.
                     case 4:
+                        products = await _productService.GetProductsByUnitType(selectedUnitType);
+                        products.ForEach(p => {
+                            p.UnitTypeName = p.UnitType.Name;
+                        });
+                        dgvProductos.DataSource = products;
+                        ConfigureTable(dgvProductos);
+                        ManageErrorLabel();
                         break;
                     //Get Product By Id.
                     case 5:
@@ -75,6 +135,7 @@ namespace atahualpa_ferresys.Forms
                         }
                         dgvProductos.DataSource = products;
                         ConfigureTable(dgvProductos);
+                        ManageErrorLabel();
                         break;
                     default:
                         break;
@@ -100,6 +161,7 @@ namespace atahualpa_ferresys.Forms
             dgv.Columns[7].Visible = false;
             dgv.Columns[8].Visible = false;
             dgv.Columns[10].Visible = false;
+            dgv.Columns[12].Visible = false;
 
             dgv.Columns[0].Width = 30;
             dgv.Columns[1].Width = 350;
@@ -231,5 +293,86 @@ namespace atahualpa_ferresys.Forms
             FillProductsTable(0);
         }
 
+        private void cbBusquedaAux_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(unitTypesLoaded)
+            {
+                selectedUnitType = Int32.Parse(cbBusquedaAux.SelectedValue.ToString());
+                FillProductsTable(4);
+            }
+        }
+
+        private void ManageErrorLabel()
+        {
+            if (dgvProductos.Rows.Count >= 1)
+            {
+                lblError.Visible = false;
+            }
+            else { lblError.Visible = true; }
+        }
+
+        private async void btnSave_ClickAsync(object sender, EventArgs e)
+        {
+            Product product = new Product(txtPName.Text,
+                txtPDesc.Text,
+                Tools.TryParseDouble(txtBuyPrice.Text),
+                Tools.TryParseDouble(txtSellPrice.Text),
+                Tools.TryParseInt(txtStock.Text),
+                cbVisible.Checked,
+                Tools.TryParseInt(cbSupplier.SelectedValue.ToString()),
+                Tools.TryParseInt(cbUnitType.SelectedValue.ToString()));
+
+            ProductValidator validator = new ProductValidator();
+            FluentValidation.Results.ValidationResult results = validator.Validate(product);
+            if(results.IsValid)
+            {
+                try
+                {
+                    var createProduct = await _productService.CreateProduct(product);
+                    MessageBox.Show(createProduct.ToString());
+
+                }
+                catch (Exception ex) { MessageBox.Show($"Error: {ex.Message}"); }
+            }
+            else
+            {
+                MessageBox.Show(results.ToString());
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBuyPrice_KeyPress(object sender, KeyPressEventArgs e) { EnableDecimals(sender, e); }
+
+
+        private void txtSellPrice_KeyPress(object sender, KeyPressEventArgs e) { EnableDecimals(sender, e); }
+
+
+        private void txtStock_KeyPress(object sender, KeyPressEventArgs e) { EnableDigits(sender, e); }
+
+
+        private void EnableDecimals(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '.' && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar == '.' && ((TextBox)sender).Text.Contains("."))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void EnableDigits(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

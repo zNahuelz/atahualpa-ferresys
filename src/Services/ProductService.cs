@@ -47,12 +47,29 @@ namespace atahualpa_ferresys.Services
             return JsonConvert.DeserializeObject<List<Product>>(json);
         }
 
+        public async Task<List<Product>> GetProductsByUnitType(int id)
+        {
+            var response = await _httpClient.GetAsync($"product/by_unit_type/{id}");
+            response.EnsureSuccessStatusCode();
+            var json = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<Product>>(json);
+        }
+
         public async Task<Product> GetProductById(int id)
         {
             var response = await _httpClient.GetAsync($"product/{id}");
             response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Product>(json);
+        }
+
+        public async Task<HttpResponseMessage> CreateProduct(Product product)
+        {
+            string jsonProduct = product.ToJSON();
+            Console.Write(jsonProduct);
+            var body = new StringContent(jsonProduct, Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("product",body);
+            return response;
         }
 
     }

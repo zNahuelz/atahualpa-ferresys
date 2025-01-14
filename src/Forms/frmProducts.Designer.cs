@@ -37,14 +37,33 @@
             this.tpDetalle = new System.Windows.Forms.TabPage();
             this.tpEliminarProducto = new System.Windows.Forms.TabPage();
             this.gbPrincipal = new System.Windows.Forms.GroupBox();
-            this.txtBusqueda = new System.Windows.Forms.TextBox();
-            this.cbOpBuscar = new System.Windows.Forms.ComboBox();
-            this.btnResetear = new System.Windows.Forms.Button();
-            this.cbBusquedaAux = new System.Windows.Forms.ComboBox();
             this.dtpBusqueda = new System.Windows.Forms.DateTimePicker();
+            this.cbBusquedaAux = new System.Windows.Forms.ComboBox();
+            this.btnResetear = new System.Windows.Forms.Button();
+            this.cbOpBuscar = new System.Windows.Forms.ComboBox();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
+            this.txtPName = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblDesc = new System.Windows.Forms.Label();
+            this.txtPDesc = new System.Windows.Forms.TextBox();
+            this.lblBP = new System.Windows.Forms.Label();
+            this.txtBuyPrice = new System.Windows.Forms.TextBox();
+            this.lblSP = new System.Windows.Forms.Label();
+            this.txtSellPrice = new System.Windows.Forms.TextBox();
+            this.lblStock = new System.Windows.Forms.Label();
+            this.txtStock = new System.Windows.Forms.TextBox();
+            this.cbVisible = new System.Windows.Forms.CheckBox();
+            this.cbSupplier = new System.Windows.Forms.ComboBox();
+            this.lblSupp = new System.Windows.Forms.Label();
+            this.lblUnitT = new System.Windows.Forms.Label();
+            this.cbUnitType = new System.Windows.Forms.ComboBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.gbTest = new System.Windows.Forms.GroupBox();
             this.tcProductos.SuspendLayout();
             this.tpPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
+            this.tpNuevoProducto.SuspendLayout();
             this.gbPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,6 +121,24 @@
             // 
             // tpNuevoProducto
             // 
+            this.tpNuevoProducto.Controls.Add(this.gbTest);
+            this.tpNuevoProducto.Controls.Add(this.btnClear);
+            this.tpNuevoProducto.Controls.Add(this.btnSave);
+            this.tpNuevoProducto.Controls.Add(this.cbUnitType);
+            this.tpNuevoProducto.Controls.Add(this.lblUnitT);
+            this.tpNuevoProducto.Controls.Add(this.lblSupp);
+            this.tpNuevoProducto.Controls.Add(this.cbSupplier);
+            this.tpNuevoProducto.Controls.Add(this.cbVisible);
+            this.tpNuevoProducto.Controls.Add(this.lblStock);
+            this.tpNuevoProducto.Controls.Add(this.txtStock);
+            this.tpNuevoProducto.Controls.Add(this.lblSP);
+            this.tpNuevoProducto.Controls.Add(this.txtSellPrice);
+            this.tpNuevoProducto.Controls.Add(this.lblBP);
+            this.tpNuevoProducto.Controls.Add(this.txtBuyPrice);
+            this.tpNuevoProducto.Controls.Add(this.txtPDesc);
+            this.tpNuevoProducto.Controls.Add(this.lblDesc);
+            this.tpNuevoProducto.Controls.Add(this.lblName);
+            this.tpNuevoProducto.Controls.Add(this.txtPName);
             this.tpNuevoProducto.Location = new System.Drawing.Point(4, 28);
             this.tpNuevoProducto.Name = "tpNuevoProducto";
             this.tpNuevoProducto.Padding = new System.Windows.Forms.Padding(3);
@@ -143,24 +180,24 @@
             this.gbPrincipal.TabStop = false;
             this.gbPrincipal.Text = "HERRAMIENTAS";
             // 
-            // txtBusqueda
+            // dtpBusqueda
             // 
-            this.txtBusqueda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBusqueda.Location = new System.Drawing.Point(10, 62);
-            this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(261, 22);
-            this.txtBusqueda.TabIndex = 0;
-            this.txtBusqueda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusqueda_KeyPress);
+            this.dtpBusqueda.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpBusqueda.Location = new System.Drawing.Point(289, 62);
+            this.dtpBusqueda.Name = "dtpBusqueda";
+            this.dtpBusqueda.Size = new System.Drawing.Size(261, 22);
+            this.dtpBusqueda.TabIndex = 4;
+            this.dtpBusqueda.ValueChanged += new System.EventHandler(this.dtpBusqueda_ValueChanged);
             // 
-            // cbOpBuscar
+            // cbBusquedaAux
             // 
-            this.cbOpBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbOpBuscar.FormattingEnabled = true;
-            this.cbOpBuscar.Location = new System.Drawing.Point(10, 21);
-            this.cbOpBuscar.Name = "cbOpBuscar";
-            this.cbOpBuscar.Size = new System.Drawing.Size(261, 24);
-            this.cbOpBuscar.TabIndex = 1;
-            this.cbOpBuscar.SelectedIndexChanged += new System.EventHandler(this.cbOpBuscar_SelectedIndexChanged);
+            this.cbBusquedaAux.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbBusquedaAux.FormattingEnabled = true;
+            this.cbBusquedaAux.Location = new System.Drawing.Point(289, 21);
+            this.cbBusquedaAux.Name = "cbBusquedaAux";
+            this.cbBusquedaAux.Size = new System.Drawing.Size(261, 24);
+            this.cbBusquedaAux.TabIndex = 3;
+            this.cbBusquedaAux.SelectedIndexChanged += new System.EventHandler(this.cbBusquedaAux_SelectedIndexChanged);
             // 
             // btnResetear
             // 
@@ -172,25 +209,187 @@
             this.btnResetear.UseVisualStyleBackColor = true;
             this.btnResetear.Click += new System.EventHandler(this.btnResetear_Click);
             // 
-            // cbBusquedaAux
+            // cbOpBuscar
             // 
-            this.cbBusquedaAux.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbBusquedaAux.FormattingEnabled = true;
-            this.cbBusquedaAux.Location = new System.Drawing.Point(289, 21);
-            this.cbBusquedaAux.Name = "cbBusquedaAux";
-            this.cbBusquedaAux.Size = new System.Drawing.Size(261, 24);
-            this.cbBusquedaAux.TabIndex = 3;
+            this.cbOpBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbOpBuscar.FormattingEnabled = true;
+            this.cbOpBuscar.Location = new System.Drawing.Point(10, 21);
+            this.cbOpBuscar.Name = "cbOpBuscar";
+            this.cbOpBuscar.Size = new System.Drawing.Size(261, 24);
+            this.cbOpBuscar.TabIndex = 1;
+            this.cbOpBuscar.SelectedIndexChanged += new System.EventHandler(this.cbOpBuscar_SelectedIndexChanged);
             // 
-            // dtpBusqueda
+            // txtBusqueda
             // 
-            this.dtpBusqueda.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpBusqueda.Location = new System.Drawing.Point(289, 62);
-            this.dtpBusqueda.Name = "dtpBusqueda";
-            this.dtpBusqueda.Size = new System.Drawing.Size(261, 22);
-            this.dtpBusqueda.TabIndex = 4;
-            this.dtpBusqueda.ValueChanged += new System.EventHandler(this.dtpBusqueda_ValueChanged);
+            this.txtBusqueda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBusqueda.Location = new System.Drawing.Point(10, 62);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(261, 22);
+            this.txtBusqueda.TabIndex = 0;
+            this.txtBusqueda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusqueda_KeyPress);
             // 
-            // Productos
+            // txtPName
+            // 
+            this.txtPName.Location = new System.Drawing.Point(157, 35);
+            this.txtPName.Name = "txtPName";
+            this.txtPName.Size = new System.Drawing.Size(314, 22);
+            this.txtPName.TabIndex = 0;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(64, 38);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(72, 16);
+            this.lblName.TabIndex = 1;
+            this.lblName.Text = "NOMBRE";
+            // 
+            // lblDesc
+            // 
+            this.lblDesc.AutoSize = true;
+            this.lblDesc.Location = new System.Drawing.Point(27, 89);
+            this.lblDesc.Name = "lblDesc";
+            this.lblDesc.Size = new System.Drawing.Size(109, 16);
+            this.lblDesc.TabIndex = 2;
+            this.lblDesc.Text = "DESCRIPCIÓN";
+            // 
+            // txtPDesc
+            // 
+            this.txtPDesc.Location = new System.Drawing.Point(157, 83);
+            this.txtPDesc.Multiline = true;
+            this.txtPDesc.Name = "txtPDesc";
+            this.txtPDesc.Size = new System.Drawing.Size(314, 121);
+            this.txtPDesc.TabIndex = 3;
+            // 
+            // lblBP
+            // 
+            this.lblBP.AutoSize = true;
+            this.lblBP.Location = new System.Drawing.Point(64, 245);
+            this.lblBP.Name = "lblBP";
+            this.lblBP.Size = new System.Drawing.Size(71, 32);
+            this.lblBP.TabIndex = 5;
+            this.lblBP.Text = "PRECIO\r\nCOMPRA";
+            // 
+            // txtBuyPrice
+            // 
+            this.txtBuyPrice.Location = new System.Drawing.Point(157, 250);
+            this.txtBuyPrice.Name = "txtBuyPrice";
+            this.txtBuyPrice.Size = new System.Drawing.Size(93, 22);
+            this.txtBuyPrice.TabIndex = 4;
+            this.txtBuyPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuyPrice_KeyPress);
+            // 
+            // lblSP
+            // 
+            this.lblSP.AutoSize = true;
+            this.lblSP.Location = new System.Drawing.Point(293, 245);
+            this.lblSP.Name = "lblSP";
+            this.lblSP.Size = new System.Drawing.Size(63, 32);
+            this.lblSP.TabIndex = 7;
+            this.lblSP.Text = "PRECIO\r\nVENTA";
+            // 
+            // txtSellPrice
+            // 
+            this.txtSellPrice.Location = new System.Drawing.Point(378, 250);
+            this.txtSellPrice.Name = "txtSellPrice";
+            this.txtSellPrice.Size = new System.Drawing.Size(93, 22);
+            this.txtSellPrice.TabIndex = 6;
+            this.txtSellPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSellPrice_KeyPress);
+            // 
+            // lblStock
+            // 
+            this.lblStock.AutoSize = true;
+            this.lblStock.Location = new System.Drawing.Point(64, 308);
+            this.lblStock.Name = "lblStock";
+            this.lblStock.Size = new System.Drawing.Size(57, 16);
+            this.lblStock.TabIndex = 9;
+            this.lblStock.Text = "STOCK";
+            // 
+            // txtStock
+            // 
+            this.txtStock.Location = new System.Drawing.Point(157, 305);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(93, 22);
+            this.txtStock.TabIndex = 8;
+            this.txtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStock_KeyPress);
+            // 
+            // cbVisible
+            // 
+            this.cbVisible.AutoSize = true;
+            this.cbVisible.Checked = true;
+            this.cbVisible.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbVisible.Location = new System.Drawing.Point(293, 306);
+            this.cbVisible.Name = "cbVisible";
+            this.cbVisible.Size = new System.Drawing.Size(82, 20);
+            this.cbVisible.TabIndex = 11;
+            this.cbVisible.Text = "VISIBLE";
+            this.cbVisible.UseVisualStyleBackColor = true;
+            // 
+            // cbSupplier
+            // 
+            this.cbSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSupplier.FormattingEnabled = true;
+            this.cbSupplier.Location = new System.Drawing.Point(157, 363);
+            this.cbSupplier.Name = "cbSupplier";
+            this.cbSupplier.Size = new System.Drawing.Size(314, 24);
+            this.cbSupplier.TabIndex = 12;
+            // 
+            // lblSupp
+            // 
+            this.lblSupp.AutoSize = true;
+            this.lblSupp.Location = new System.Drawing.Point(19, 367);
+            this.lblSupp.Name = "lblSupp";
+            this.lblSupp.Size = new System.Drawing.Size(102, 16);
+            this.lblSupp.TabIndex = 13;
+            this.lblSupp.Text = "PROVEEDOR";
+            // 
+            // lblUnitT
+            // 
+            this.lblUnitT.AutoSize = true;
+            this.lblUnitT.Location = new System.Drawing.Point(54, 410);
+            this.lblUnitT.Name = "lblUnitT";
+            this.lblUnitT.Size = new System.Drawing.Size(67, 32);
+            this.lblUnitT.TabIndex = 14;
+            this.lblUnitT.Text = "TIPO DE\r\nUNIDAD";
+            // 
+            // cbUnitType
+            // 
+            this.cbUnitType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUnitType.FormattingEnabled = true;
+            this.cbUnitType.Location = new System.Drawing.Point(157, 414);
+            this.cbUnitType.Name = "cbUnitType";
+            this.cbUnitType.Size = new System.Drawing.Size(314, 24);
+            this.cbUnitType.TabIndex = 15;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(157, 466);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(314, 34);
+            this.btnSave.TabIndex = 16;
+            this.btnSave.Text = "GUARDAR";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_ClickAsync);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(157, 515);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(314, 34);
+            this.btnClear.TabIndex = 17;
+            this.btnClear.Text = "LIMPIAR";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // gbTest
+            // 
+            this.gbTest.Location = new System.Drawing.Point(551, 35);
+            this.gbTest.Name = "gbTest";
+            this.gbTest.Size = new System.Drawing.Size(492, 514);
+            this.gbTest.TabIndex = 18;
+            this.gbTest.TabStop = false;
+            this.gbTest.Text = "ÚLTIMO PRODUCTO GUARDADO";
+            // 
+            // frmProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -202,7 +401,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Productos";
+            this.Name = "frmProducts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrar - Productos";
             this.Load += new System.EventHandler(this.Productos_Load);
@@ -210,6 +409,8 @@
             this.tpPrincipal.ResumeLayout(false);
             this.tpPrincipal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
+            this.tpNuevoProducto.ResumeLayout(false);
+            this.tpNuevoProducto.PerformLayout();
             this.gbPrincipal.ResumeLayout(false);
             this.gbPrincipal.PerformLayout();
             this.ResumeLayout(false);
@@ -231,5 +432,23 @@
         private System.Windows.Forms.ComboBox cbOpBuscar;
         private System.Windows.Forms.ComboBox cbBusquedaAux;
         private System.Windows.Forms.DateTimePicker dtpBusqueda;
+        private System.Windows.Forms.TextBox txtPName;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblDesc;
+        private System.Windows.Forms.TextBox txtPDesc;
+        private System.Windows.Forms.Label lblBP;
+        private System.Windows.Forms.TextBox txtBuyPrice;
+        private System.Windows.Forms.Label lblSP;
+        private System.Windows.Forms.TextBox txtSellPrice;
+        private System.Windows.Forms.Label lblStock;
+        private System.Windows.Forms.TextBox txtStock;
+        private System.Windows.Forms.CheckBox cbVisible;
+        private System.Windows.Forms.Label lblSupp;
+        private System.Windows.Forms.ComboBox cbSupplier;
+        private System.Windows.Forms.ComboBox cbUnitType;
+        private System.Windows.Forms.Label lblUnitT;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.GroupBox gbTest;
     }
 }

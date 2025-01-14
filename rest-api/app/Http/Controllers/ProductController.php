@@ -7,23 +7,26 @@ use App\Models\Product;
 use App\Models\Supplier;
 use App\Models\UnitType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
     public function createProduct(Request $request)
     {
+        //TODO: Description is always default.
         $request->validate([
             'name' => ['required','string','min:2','max:150'],
             'description' => ['max:255'],
-            'buy_price' => ['required','decimal:2'],
-            'sell_price' => ['required','decimal:2'],
+            'buy_price' => ['required','numeric','regex:/^\d+(\.\d{1,2})?$/'],
+            'sell_price' => ['required','numeric','regex:/^\d+(\.\d{1,2})?$/'],
             'stock' => ['required','numeric'],
             'supplier_id' => ['required','numeric'],
-            'unit_type' => ['required','numeric']
+            'unit_type_id' => ['required','numeric'],
+            'visible' => ['required','boolean']
         ]);
-
+        Log::info($request);
         $supplier = Supplier::find($request->supplier_id);
-        $unitType = UnitType::find($request->unit_type);
+        $unitType = UnitType::find($request->unit_type_id);
 
         if(!$supplier)
         {
@@ -35,7 +38,7 @@ class ProductController extends Controller
         if(!$unitType)
         {
             return response()->json([
-                'message' => 'Error! No se encontro el tipo de unidad de ID: '.$request->unit_type
+                'message' => 'Error! No se encontro el tipo de unidad de ID: '.$request->unit_type_id
             ],422);
         }
 
@@ -46,7 +49,8 @@ class ProductController extends Controller
             'sell_price' => $request->sell_price,
             'stock' => $request->stock,
             'supplier_id' => $request->supplier_id,
-
+            'unit_type' => $request->unit_type_id,
+            'visible' => $request->visible,
         ]);
 
         return response()->json([
@@ -70,6 +74,14 @@ class ProductController extends Controller
     public function getProductsByDescription($description)
     {
         $products = Product::with(['supplier','unitType'])->where('description','LIKE','%'.$description.'%')->get();
+        return response()->json($products);
+    }
+
+    public function getProductsByUnitType($unitType)
+    {
+        $products = Product::with(['supplier','unitType'])->whereHas('unitType', function($query) use ($unitType){
+            $query->where('id',$unitType);
+        })->get();
         return response()->json($products);
     }
 

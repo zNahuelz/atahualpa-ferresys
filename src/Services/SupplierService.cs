@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace atahualpa_ferresys.Services
 {
-    public class UnitTypeService
+    public class SupplierService
     {
         private readonly HttpClient _httpClient;
 
-        public UnitTypeService(string baseURL, string token)
+        public SupplierService(string baseURL, string token)
         {
             _httpClient = new HttpClient();
             {
@@ -23,13 +23,12 @@ namespace atahualpa_ferresys.Services
                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
         }
 
-        public async Task<List<UnitType>> GetUnitTypes()
+        public async Task<List<Supplier>> GetSuppliers()
         {
-            var response = await _httpClient.GetAsync("unit_type");
+            var response = await _httpClient.GetAsync("supplier");
             response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<List<UnitType>>(json);
+            return JsonConvert.DeserializeObject<List<Supplier>>(json);
         }
-
     }
 }

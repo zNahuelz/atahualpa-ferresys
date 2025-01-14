@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms.VisualStyles;
 
 namespace atahualpa_ferresys.Utils
 {
@@ -11,6 +12,23 @@ namespace atahualpa_ferresys.Utils
         {
             "POR NOMBRE","POR DESCRIPCIÓN","POR FECHA DE INGRESO","POR PRESENTACIÓN","POR ID"
         };
+
+        public static double TryParseDouble(string str)
+        {
+            if (Double.TryParse(str, out double result))
+            {
+                return Math.Round(result, 2);
+            }
+            else
+            {
+                return 0.00;
+            }
+        }
+
+        public static int TryParseInt(string str)
+        {
+            return Int32.TryParse(str, out int result) ? result : 0;
+        }
     }
 
     public class FrontProducto
