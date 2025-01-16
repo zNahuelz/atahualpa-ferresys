@@ -1,8 +1,10 @@
-﻿using atahualpa_ferresys.Utils;
+﻿using atahualpa_ferresys.Forms.Product;
+using atahualpa_ferresys.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Objects;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -11,13 +13,14 @@ using System.Windows.Forms;
 
 namespace atahualpa_ferresys.Forms
 {
-    public partial class Principal : Form
+    public partial class frmMain : Form
     {
         private frmProducts frmProductos;
         private Proveedores frmProveedores;
         private Comprobantes frmComprobantes;
         private Clientes frmClientes;
-        public Principal()
+        private frmProductList ProductListForm;
+        public frmMain()
         {
             InitializeComponent();
         }
@@ -43,7 +46,8 @@ namespace atahualpa_ferresys.Forms
             if (pg == DialogResult.Yes) { Application.Exit(); }
         }
 
-        private void btnProductos_Click(object sender, EventArgs e){ AbrirFormularios(0); }
+        private void btnProductos_Click(object sender, EventArgs e){ //AbrirFormularios(0);
+                                                                     }
         private void btnProveedores_Click(object sender, EventArgs e) { AbrirFormularios(1); }
         private void btnComprobantes_Click(object sender, EventArgs e) { AbrirFormularios(2); }
         private void btnClientes_Click(object sender, EventArgs e){ AbrirFormularios(3); }
@@ -93,11 +97,30 @@ namespace atahualpa_ferresys.Forms
             }
         }
 
+        private void OpenForm(int o)
+        {
+            switch (o)
+            {
+                case 0:
+                    if(ProductListForm == null)
+                    {
+                        ProductListForm = new frmProductList();
+                        ProductListForm.MdiParent = this;
+                        ProductListForm.FormClosed += new FormClosedEventHandler(CloseProductListForm);
+                        ProductListForm.Show();
+                    }
+                    break;
+                default: break;
+            }
+        }
+
         private void CerrarProductos(object sender, FormClosedEventArgs e) { frmProductos = null; }
         private void CerrarProveedores(object sender, FormClosedEventArgs e) { frmProveedores = null; }
         private void CerrarComprobantes(object sender, FormClosedEventArgs e) { frmComprobantes = null; }
         private void CerrarClientes(object sender, FormClosedEventArgs e) { frmClientes = null; }
 
+        private void CloseProductListForm(object sender, FormClosedEventArgs e) { ProductListForm = null; }
 
+        private void lISTADOToolStripMenuItem_Click(object sender, EventArgs e){ OpenForm(0); }
     }
 }

@@ -17,8 +17,11 @@ namespace atahualpa_ferresys.Forms
         //TODO -> Revisar...
         public string TextoBusqueda = "";
         public int selectedUnitType = 0;
+        public int unitTypeToSave = 0;
         public bool unitTypesLoaded = false;
         public bool supplierLoaded = false;
+        public bool saveEnabled = true;
+        public bool clearEnabled = true;
         private readonly ProductService _productService = new ProductService(Tools.API_URL,Tools.JWT_TOKEN);
         private readonly UnitTypeService _unitTypeService = new UnitTypeService(Tools.API_URL, Tools.JWT_TOKEN);
         private readonly SupplierService _supplierService = new SupplierService(Tools.API_URL, Tools.JWT_TOKEN);
@@ -29,6 +32,8 @@ namespace atahualpa_ferresys.Forms
 
         private void Productos_Load(object sender, EventArgs e)
         {
+            btnSave.Enabled = saveEnabled;
+            btnClear.Enabled = clearEnabled;
             FillUnitTypesCb();
             FillSuppliersCb();
             FillProductsTable(0);
@@ -41,12 +46,14 @@ namespace atahualpa_ferresys.Forms
             try
             {
                 List<UnitType> unitTypes = new List<UnitType>();
+                List<UnitType> unitTypesToSave = new List<UnitType>();
                 unitTypes = await _unitTypeService.GetUnitTypes();
+                unitTypesToSave = unitTypes;
                 cbBusquedaAux.DataSource = unitTypes;
                 cbBusquedaAux.DisplayMember = "Name";
                 cbBusquedaAux.ValueMember = "Id";
 
-                cbUnitType.DataSource = unitTypes;
+                cbUnitType.DataSource = unitTypesToSave;
                 cbUnitType.DisplayMember = "Name";
                 cbUnitType.ValueMember = "Id";
                 unitTypesLoaded = true;
@@ -78,7 +85,7 @@ namespace atahualpa_ferresys.Forms
         {
             try
             {
-                List<Product> products = new List<Product>();
+                List<Entities.Product> products = new List<Entities.Product>();
                 switch (o)
                 {
                     //Get All Products.
@@ -127,7 +134,7 @@ namespace atahualpa_ferresys.Forms
                         break;
                     //Get Product By Id.
                     case 5:
-                        Product product = new Product();
+                        Entities.Product product = new Entities.Product();
                         product = await _productService.GetProductById(Int32.Parse(TextoBusqueda));
                         if(product.Name != "")
                         {
@@ -180,7 +187,7 @@ namespace atahualpa_ferresys.Forms
             dgv.Columns[5].HeaderText = "STOCK";
             dgv.Columns[7].HeaderText = "PROVEEDOR";
             dgv.Columns[9].HeaderText = "FECHA INGRESO";
-            dgv.Columns[11].HeaderText = "UNIDAD";
+            dgv.Columns[11].HeaderText = "PRESENTACIÓN";
         }
 
         private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -248,6 +255,7 @@ namespace atahualpa_ferresys.Forms
             FillProductsTable(0);
             txtBusqueda.Clear();
             cbOpBuscar.SelectedIndex = 0;
+            cbBusquedaAux.SelectedIndex = 0;
         }
 
         private void cbOpBuscar_SelectedIndexChanged(object sender, EventArgs e)
@@ -313,7 +321,9 @@ namespace atahualpa_ferresys.Forms
 
         private async void btnSave_ClickAsync(object sender, EventArgs e)
         {
-            Product product = new Product(txtPName.Text,
+            saveEnabled = false;
+            clearEnabled = false;
+            Entities.Product product = new Entities.Product(txtPName.Text,
                 txtPDesc.Text,
                 Tools.TryParseDouble(txtBuyPrice.Text),
                 Tools.TryParseDouble(txtSellPrice.Text),
@@ -330,13 +340,13 @@ namespace atahualpa_ferresys.Forms
                 {
                     var createProduct = await _productService.CreateProduct(product);
                     MessageBox.Show(createProduct.ToString());
-
+                  
                 }
                 catch (Exception ex) { MessageBox.Show($"Error: {ex.Message}"); }
             }
             else
             {
-                MessageBox.Show(results.ToString());
+                MessageBox.Show(results.ToString(),"ALERTA",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
         }
 
@@ -372,6 +382,22 @@ namespace atahualpa_ferresys.Forms
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void cbUnitType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (unitTypesLoaded)
+            {
+                unitTypeToSave = Int32.Parse(cbUnitType.SelectedValue.ToString());
+            }
+        }
+
+        private void tcProductos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(tcProductos.SelectedIndex.Equals(0))
+            {
+                btnResetear.PerformClick();
             }
         }
     }

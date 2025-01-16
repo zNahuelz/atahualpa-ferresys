@@ -1,6 +1,6 @@
 ﻿namespace atahualpa_ferresys.Forms
 {
-    partial class Principal
+    partial class frmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.tsPrincipal = new System.Windows.Forms.ToolStrip();
             this.btnNuevaVenta = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnProductos = new System.Windows.Forms.ToolStripButton();
+            this.btnProductos = new System.Windows.Forms.ToolStripDropDownButton();
+            this.lISTADOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gESTIONARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnClientes = new System.Windows.Forms.ToolStripButton();
             this.btnProveedores = new System.Windows.Forms.ToolStripButton();
             this.btnComprobantes = new System.Windows.Forms.ToolStripButton();
@@ -87,6 +89,9 @@
             // 
             // btnProductos
             // 
+            this.btnProductos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lISTADOToolStripMenuItem,
+            this.gESTIONARToolStripMenuItem});
             this.btnProductos.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProductos.Image = ((System.Drawing.Image)(resources.GetObject("btnProductos.Image")));
             this.btnProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -96,6 +101,19 @@
             this.btnProductos.Size = new System.Drawing.Size(187, 68);
             this.btnProductos.Text = "PRODUCTOS";
             this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
+            // 
+            // lISTADOToolStripMenuItem
+            // 
+            this.lISTADOToolStripMenuItem.Name = "lISTADOToolStripMenuItem";
+            this.lISTADOToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.lISTADOToolStripMenuItem.Text = "LISTADO";
+            this.lISTADOToolStripMenuItem.Click += new System.EventHandler(this.lISTADOToolStripMenuItem_Click);
+            // 
+            // gESTIONARToolStripMenuItem
+            // 
+            this.gESTIONARToolStripMenuItem.Name = "gESTIONARToolStripMenuItem";
+            this.gESTIONARToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.gESTIONARToolStripMenuItem.Text = "GESTIONAR";
             // 
             // btnClientes
             // 
@@ -185,7 +203,7 @@
             // 
             this.tReloj.Tick += new System.EventHandler(this.tReloj_Tick);
             // 
-            // Principal
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -198,7 +216,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.Name = "Principal";
+            this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FERRETERIA ATAHUALPA - ADMINISTRACIÓN";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -213,7 +231,6 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip tsPrincipal;
-        private System.Windows.Forms.ToolStripButton btnProductos;
         private System.Windows.Forms.ToolStripButton btnClientes;
         private System.Windows.Forms.ToolStripButton btnProveedores;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -226,5 +243,8 @@
         private System.Windows.Forms.ToolStripMenuItem btnMiPerfil;
         private System.Windows.Forms.ToolStripMenuItem btnCerrarSesion;
         private System.Windows.Forms.ToolStripMenuItem btnSalir;
+        private System.Windows.Forms.ToolStripDropDownButton btnProductos;
+        private System.Windows.Forms.ToolStripMenuItem lISTADOToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gESTIONARToolStripMenuItem;
     }
 }

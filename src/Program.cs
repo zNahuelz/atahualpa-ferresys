@@ -17,7 +17,7 @@ namespace atahualpa_ferresys
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Principal());
+            Application.Run(new frmMain());
         }
     }
 }

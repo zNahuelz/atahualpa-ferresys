@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using System.Windows.Forms.VisualStyles;
 
 namespace atahualpa_ferresys.Utils
@@ -11,6 +12,11 @@ namespace atahualpa_ferresys.Utils
         public static List<string> ListadoBusquedaProductos = new List<string>()
         {
             "POR NOMBRE","POR DESCRIPCIÓN","POR FECHA DE INGRESO","POR PRESENTACIÓN","POR ID"
+        };
+
+        public static List<string> ProductSearchCriteria = new List<string>()
+        {
+            "POR NOMBRE","POR DESCRIPCIÓN","POR ID","POR PRESENTACIÓN","POR FECHA DE INGRESO"
         };
 
         public static double TryParseDouble(string str)
