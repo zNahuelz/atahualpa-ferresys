@@ -20,6 +20,7 @@ namespace atahualpa_ferresys.Forms
         private Comprobantes frmComprobantes;
         private Clientes frmClientes;
         private frmProductList ProductListForm;
+        private frmProductManagement ProductManagementForm;
         public frmMain()
         {
             InitializeComponent();
@@ -110,6 +111,15 @@ namespace atahualpa_ferresys.Forms
                         ProductListForm.Show();
                     }
                     break;
+                case 1:
+                    if (ProductManagementForm == null)
+                    {
+                        ProductManagementForm = new frmProductManagement();
+                        ProductManagementForm.MdiParent = this;
+                        ProductManagementForm.FormClosed += new FormClosedEventHandler(CloseProductManagementForm);
+                        ProductManagementForm.Show();
+                    }
+                    break;
                 default: break;
             }
         }
@@ -120,7 +130,10 @@ namespace atahualpa_ferresys.Forms
         private void CerrarClientes(object sender, FormClosedEventArgs e) { frmClientes = null; }
 
         private void CloseProductListForm(object sender, FormClosedEventArgs e) { ProductListForm = null; }
+        private void CloseProductManagementForm(object sender, FormClosedEventArgs e) { ProductManagementForm = null; }
 
         private void lISTADOToolStripMenuItem_Click(object sender, EventArgs e){ OpenForm(0); }
+
+        private void gESTIONARToolStripMenuItem_Click(object sender, EventArgs e){ OpenForm(1); }
     }
 }

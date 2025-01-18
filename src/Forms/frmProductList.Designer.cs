@@ -30,19 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProductList));
             this.gbSearch = new System.Windows.Forms.GroupBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.dtpDate = new System.Windows.Forms.DateTimePicker();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.cbUnitType = new System.Windows.Forms.ComboBox();
+            this.lblUnitType = new System.Windows.Forms.Label();
+            this.txtKeyword = new System.Windows.Forms.TextBox();
+            this.lblKeyword = new System.Windows.Forms.Label();
+            this.lblMode = new System.Windows.Forms.Label();
+            this.cbSearchType = new System.Windows.Forms.ComboBox();
+            this.btnReset = new System.Windows.Forms.Button();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.lblMessage = new System.Windows.Forms.Label();
             this.gbSort = new System.Windows.Forms.GroupBox();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.cbSearchType = new System.Windows.Forms.ComboBox();
-            this.lblMode = new System.Windows.Forms.Label();
-            this.lblKeyword = new System.Windows.Forms.Label();
-            this.txtKeyword = new System.Windows.Forms.TextBox();
-            this.lblUnitType = new System.Windows.Forms.Label();
-            this.cbUnitType = new System.Windows.Forms.ComboBox();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.dtpDate = new System.Windows.Forms.DateTimePicker();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.gbSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +66,98 @@
             this.gbSearch.TabIndex = 0;
             this.gbSearch.TabStop = false;
             this.gbSearch.Text = "BUSQUEDA";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(470, 98);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(208, 27);
+            this.btnSearch.TabIndex = 9;
+            this.btnSearch.Text = "BUSCAR";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // dtpDate
+            // 
+            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDate.Location = new System.Drawing.Point(474, 73);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(200, 22);
+            this.dtpDate.TabIndex = 8;
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(399, 76);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(57, 16);
+            this.lblDate.TabIndex = 7;
+            this.lblDate.Text = "FECHA";
+            // 
+            // cbUnitType
+            // 
+            this.cbUnitType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUnitType.FormattingEnabled = true;
+            this.cbUnitType.Location = new System.Drawing.Point(474, 31);
+            this.cbUnitType.Name = "cbUnitType";
+            this.cbUnitType.Size = new System.Drawing.Size(201, 24);
+            this.cbUnitType.TabIndex = 6;
+            this.cbUnitType.SelectedIndexChanged += new System.EventHandler(this.cbUnitT_IndexChanged);
+            // 
+            // lblUnitType
+            // 
+            this.lblUnitType.AutoSize = true;
+            this.lblUnitType.Location = new System.Drawing.Point(352, 35);
+            this.lblUnitType.Name = "lblUnitType";
+            this.lblUnitType.Size = new System.Drawing.Size(104, 16);
+            this.lblUnitType.TabIndex = 5;
+            this.lblUnitType.Text = "TIPO UNIDAD";
+            // 
+            // txtKeyword
+            // 
+            this.txtKeyword.Location = new System.Drawing.Point(126, 70);
+            this.txtKeyword.Name = "txtKeyword";
+            this.txtKeyword.Size = new System.Drawing.Size(208, 22);
+            this.txtKeyword.TabIndex = 4;
+            this.txtKeyword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKeyw_KeyPress);
+            // 
+            // lblKeyword
+            // 
+            this.lblKeyword.AutoSize = true;
+            this.lblKeyword.Location = new System.Drawing.Point(30, 73);
+            this.lblKeyword.Name = "lblKeyword";
+            this.lblKeyword.Size = new System.Drawing.Size(78, 16);
+            this.lblKeyword.TabIndex = 3;
+            this.lblKeyword.Text = "CRITERIO";
+            // 
+            // lblMode
+            // 
+            this.lblMode.AutoSize = true;
+            this.lblMode.Location = new System.Drawing.Point(56, 34);
+            this.lblMode.Name = "lblMode";
+            this.lblMode.Size = new System.Drawing.Size(52, 16);
+            this.lblMode.TabIndex = 2;
+            this.lblMode.Text = "MODO";
+            // 
+            // cbSearchType
+            // 
+            this.cbSearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSearchType.FormattingEnabled = true;
+            this.cbSearchType.Location = new System.Drawing.Point(126, 31);
+            this.cbSearchType.Name = "cbSearchType";
+            this.cbSearchType.Size = new System.Drawing.Size(208, 24);
+            this.cbSearchType.TabIndex = 1;
+            this.cbSearchType.SelectedIndexChanged += new System.EventHandler(this.cbSearchT_IndexChanged);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(126, 98);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(208, 27);
+            this.btnReset.TabIndex = 0;
+            this.btnReset.Text = "LIMPIAR / REFRESCAR";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // dgvProducts
             // 
@@ -102,97 +194,6 @@
             this.gbSort.TabIndex = 3;
             this.gbSort.TabStop = false;
             this.gbSort.Text = "ORDENAR";
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(126, 98);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(208, 27);
-            this.btnReset.TabIndex = 0;
-            this.btnReset.Text = "LIMPIAR / REFRESCAR";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // cbSearchType
-            // 
-            this.cbSearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSearchType.FormattingEnabled = true;
-            this.cbSearchType.Location = new System.Drawing.Point(126, 31);
-            this.cbSearchType.Name = "cbSearchType";
-            this.cbSearchType.Size = new System.Drawing.Size(208, 24);
-            this.cbSearchType.TabIndex = 1;
-            this.cbSearchType.SelectedIndexChanged += new System.EventHandler(this.cbSearchT_IndexChanged);
-            // 
-            // lblMode
-            // 
-            this.lblMode.AutoSize = true;
-            this.lblMode.Location = new System.Drawing.Point(56, 34);
-            this.lblMode.Name = "lblMode";
-            this.lblMode.Size = new System.Drawing.Size(52, 16);
-            this.lblMode.TabIndex = 2;
-            this.lblMode.Text = "MODO";
-            // 
-            // lblKeyword
-            // 
-            this.lblKeyword.AutoSize = true;
-            this.lblKeyword.Location = new System.Drawing.Point(30, 73);
-            this.lblKeyword.Name = "lblKeyword";
-            this.lblKeyword.Size = new System.Drawing.Size(78, 16);
-            this.lblKeyword.TabIndex = 3;
-            this.lblKeyword.Text = "CRITERIO";
-            // 
-            // txtKeyword
-            // 
-            this.txtKeyword.Location = new System.Drawing.Point(126, 70);
-            this.txtKeyword.Name = "txtKeyword";
-            this.txtKeyword.Size = new System.Drawing.Size(208, 22);
-            this.txtKeyword.TabIndex = 4;
-            this.txtKeyword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKeyw_KeyPress);
-            // 
-            // lblUnitType
-            // 
-            this.lblUnitType.AutoSize = true;
-            this.lblUnitType.Location = new System.Drawing.Point(352, 35);
-            this.lblUnitType.Name = "lblUnitType";
-            this.lblUnitType.Size = new System.Drawing.Size(104, 16);
-            this.lblUnitType.TabIndex = 5;
-            this.lblUnitType.Text = "TIPO UNIDAD";
-            // 
-            // cbUnitType
-            // 
-            this.cbUnitType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbUnitType.FormattingEnabled = true;
-            this.cbUnitType.Location = new System.Drawing.Point(474, 31);
-            this.cbUnitType.Name = "cbUnitType";
-            this.cbUnitType.Size = new System.Drawing.Size(201, 24);
-            this.cbUnitType.TabIndex = 6;
-            this.cbUnitType.SelectedIndexChanged += new System.EventHandler(this.cbUnitT_IndexChanged);
-            // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(399, 76);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(57, 16);
-            this.lblDate.TabIndex = 7;
-            this.lblDate.Text = "FECHA";
-            // 
-            // dtpDate
-            // 
-            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDate.Location = new System.Drawing.Point(474, 73);
-            this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(200, 22);
-            this.dtpDate.TabIndex = 8;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(470, 98);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(208, 27);
-            this.btnSearch.TabIndex = 9;
-            this.btnSearch.Text = "BUSCAR";
-            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // frmProductList
             // 

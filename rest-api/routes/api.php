@@ -22,6 +22,8 @@ Route::group([
     'middleware' => SellerMiddleware::class,
 ], function($router){
     Route::post('/',[ProductController::class, 'createProduct']);
+    Route::put('/{id}',[ProductController::class,'updateProduct']);
+    Route::delete('/{id}', [ProductController::class,'deleteProduct']);
     Route::get('/{id}', [ProductController::class,'getProduct']);
     Route::get('/', [ProductController::class, 'getProducts']);
     Route::get('/paginate', [ProductController::class,'getProductsPaginated']);

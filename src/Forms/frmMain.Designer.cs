@@ -114,6 +114,7 @@
             this.gESTIONARToolStripMenuItem.Name = "gESTIONARToolStripMenuItem";
             this.gESTIONARToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.gESTIONARToolStripMenuItem.Text = "GESTIONAR";
+            this.gESTIONARToolStripMenuItem.Click += new System.EventHandler(this.gESTIONARToolStripMenuItem_Click);
             // 
             // btnClientes
             // 

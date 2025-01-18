@@ -1,4 +1,5 @@
 ﻿using atahualpa_ferresys.Entities;
+using atahualpa_ferresys.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -66,9 +67,23 @@ namespace atahualpa_ferresys.Services
         public async Task<HttpResponseMessage> CreateProduct(Product product)
         {
             string jsonProduct = product.ToJSON();
-            Console.Write(jsonProduct);
             var body = new StringContent(jsonProduct, Encoding.UTF8, "application/json");
             var response = await _httpClient.PostAsync("product",body);
+            return response;
+        }
+
+        public async Task<HttpResponseMessage> UpdateProduct(Product product, int id)
+        {
+            string jsonProduct = product.ToJSON();
+            var body = new StringContent(jsonProduct,Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync($"product/{id}", body);
+            return response;
+        }
+
+        public async Task<HttpResponseMessage> DeleteProduct(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"product/{id}");
+            response.EnsureSuccessStatusCode();
             return response;
         }
 

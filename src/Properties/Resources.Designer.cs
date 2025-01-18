@@ -63,6 +63,27 @@ namespace atahualpa_ferresys.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _3592821_garbage_can_general_office_recycle_bin_rubbish_bin_trash_bin_trash_can_107760 {
+            get {
+                object obj = ResourceManager.GetObject("3592821-garbage-can-general-office-recycle-bin-rubbish-bin-trash-bin-trash-can_10" +
+                        "7760", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_refresh_15732 {
+            get {
+                object obj = ResourceManager.GetObject("arrow_refresh_15732", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo_transparent {
             get {
                 object obj = ResourceManager.GetObject("logo_transparent", resourceCulture);
@@ -76,6 +97,16 @@ namespace atahualpa_ferresys.Properties {
         internal static System.Drawing.Bitmap logo_transparent1 {
             get {
                 object obj = ResourceManager.GetObject("logo_transparent1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap saveall_1204 {
+            get {
+                object obj = ResourceManager.GetObject("saveall_1204", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

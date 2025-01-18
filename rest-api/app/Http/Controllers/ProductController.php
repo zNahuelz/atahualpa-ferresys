@@ -24,7 +24,6 @@ class ProductController extends Controller
             'unit_type_id' => ['required','numeric'],
             'visible' => ['required','boolean']
         ]);
-        Log::info($request);
         $supplier = Supplier::find($request->supplier_id);
         $unitType = UnitType::find($request->unit_type_id);
 
@@ -59,6 +58,48 @@ class ProductController extends Controller
         ],201);
     }
 
+    public function updateProduct(Request $request,$id)
+    {
+        $oldProduct = Product::find($id);
+        if(!$oldProduct){
+            return response()->json(['message' => "Producto de ID: ".$id." no encontrado."],404);
+        }
+
+        $request->validate([
+            'name' => ['required','string','min:2','max:150'],
+            'description' => ['max:255'],
+            'buy_price' => ['required','numeric','regex:/^\d+(\.\d{1,2})?$/'],
+            'sell_price' => ['required','numeric','regex:/^\d+(\.\d{1,2})?$/'],
+            'stock' => ['required','numeric'],
+            'supplier_id' => ['required','exists:suppliers,id'],
+            'unit_type_id' => ['required','exists:unit_types,id'],
+            'visible' => ['required','boolean']
+        ]);
+
+        $oldProduct->update([
+            'name' => trim(strtoupper($request->name)),
+            'descripcion' => trim($request->description),
+            'buy_price' => $request->buy_price,
+            'sell_price' => $request->sell_price,
+            'stock' => $request->stock,
+            'supplier_id' => $request->supplier_id,
+            'unit_type' => $request->unit_type_id,
+            'visible' => $request->visible,
+        ]);
+
+        return response()->json([
+            'message' => 'Producto de ID: '.$id.' actualizado con exito.',
+        ],200);
+    }
+
+    public function deleteProduct($id){
+        if(!Product::exists($id)){
+            return response()->json(['message' => 'Producto de ID: '.$id.' no encontrado.'],404);
+        }
+        Product::find($id)->delete();
+        return response()->json(['message' => 'Producto de ID: '.$id.' eliminado con exito.'],200);
+    }
+
     public function getProducts()
     {
         $products = Product::with(['supplier','unitType'])->get(); //TODO Check!
@@ -87,12 +128,6 @@ class ProductController extends Controller
 
     public function getProduct($id)
     {
-        if(!is_numeric($id))
-        {
-            return response()->json([
-                'message' => 'Error! El ID ingresado debe ser numérico.'
-            ],422);
-        }
         $product = Product::with(['supplier','unitType'])->find($id); //TODO Check!
         if(!$product)
         {

@@ -279,6 +279,12 @@
     <Compile Include="Forms\Comprobantes.Designer.cs">
       <DependentUpon>Comprobantes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmProductManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmProductManagement.Designer.cs">
+      <DependentUpon>frmProductManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -354,6 +360,9 @@
     <EmbeddedResource Include="Forms\Comprobantes.resx">
       <DependentUpon>Comprobantes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmProductManagement.resx">
+      <DependentUpon>frmProductManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -415,6 +424,9 @@
       <DependentUpon>AtahualpaModel.edmx</DependentUpon>
       <LastGenOutput>AtahualpaModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\3592821-garbage-can-general-office-recycle-bin-rubbish-bin-trash-bin-trash-can_107760.png" />
+    <None Include="Resources\saveall_1204.png" />
+    <None Include="Resources\arrow_refresh_15732.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

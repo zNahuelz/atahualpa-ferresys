@@ -3,12 +3,6 @@ using atahualpa_ferresys.Services;
 using atahualpa_ferresys.Utils;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace atahualpa_ferresys.Forms.Product
@@ -25,12 +19,15 @@ namespace atahualpa_ferresys.Forms.Product
         public frmProductList()
         {
             InitializeComponent();
+        }
+
+        private void frmProductList_Load(object sender, EventArgs e)
+        {
+            ManageLabel("Cargando productos...");
             FillSearchMode();
             FillUnitTypes();
             FillProductsTable(0);
-
         }
-
 
         private async void FillProductsTable(int o)
         {
@@ -84,7 +81,7 @@ namespace atahualpa_ferresys.Forms.Product
                     //Get Product By Id.
                     case 5:
                         Entities.Product product = new Entities.Product();
-                        product = await _productService.GetProductById(Int32.Parse(Keyword)); //TODO: Cambiar por TryParse.
+                        product = await _productService.GetProductById(Tools.TryParseInt(Keyword)); //TODO: Cambiar por TryParse.
                         if (product.Name != "")
                         {
                             products.Add(product);
@@ -102,14 +99,132 @@ namespace atahualpa_ferresys.Forms.Product
             {
                 if (ex.Message.Contains("404"))
                 {
-                    ManageLabel("Conexión al servidor fallida. Vuelva a intentarlo.");
+                    ManageLabel($"Ups! Producto no encontrado. Vuelva a intentarlo.");
                 }
                 else
                 {
                     MessageBox.Show($"Error: {ex.Message}");
                 }
+                
             }
         }
+
+        private async void FillUnitTypes()
+        {
+            try
+            {
+                List<UnitType> unitTypes = new List<UnitType>();
+                unitTypes = await _unitTypeService.GetUnitTypes();
+
+                cbUnitType.DataSource = unitTypes;
+                cbUnitType.DisplayMember = "Name";
+                cbUnitType.ValueMember = "Id";
+
+                UnitTypesLoaded = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+        }
+
+        private void FillSearchMode()
+        {
+            cbSearchType.DataSource = Tools.ProductSearchCriteria;
+        }
+
+        private void cbSearchT_IndexChanged(object sender, EventArgs e)
+        {
+            switch (cbSearchType.SelectedIndex)
+            {
+                case 0: //By Name
+                    txtKeyword.Enabled = true;
+                    cbUnitType.Enabled = false;
+                    dtpDate.Enabled = false;
+                    break;
+                case 1: //By Description
+                    goto case 0;
+                case 2: //By Id
+                    goto case 0;
+                case 3: //By presentation
+                    txtKeyword.Enabled = false;
+                    cbUnitType.Enabled = true;
+                    dtpDate.Enabled = false;
+                    break;
+                case 4: //By date
+                    txtKeyword.Enabled = false;
+                    cbUnitType.Enabled = false;
+                    dtpDate.Enabled = true;
+                    break;
+                default: goto case 0;
+
+            }
+        }
+
+        private void txtKeyw_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(cbSearchType.SelectedIndex == 2)
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) { e.Handled = true; }
+            }
+        }
+
+        private void cbUnitT_IndexChanged(object sender, EventArgs e)
+        {
+            if (UnitTypesLoaded)
+            {
+                SelectedUnitType = Int32.Parse(cbUnitType.SelectedValue.ToString());
+                FillProductsTable(4);
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            switch (cbSearchType.SelectedIndex)
+            {
+                case 0:
+                    Keyword = txtKeyword.Text.Trim();
+                    if (Keyword == "") { btnReset.PerformClick(); }
+                    else
+                    {
+                        dgvProducts.DataSource = null;
+                        FillProductsTable(1);
+                    }
+                    break;
+                case 1:
+                    Keyword = txtKeyword.Text.Trim();
+                    if (Keyword == "") { btnReset.PerformClick(); }
+                    else
+                    {
+                        dgvProducts.DataSource = null;
+                        FillProductsTable(2);
+                    }
+                    break;
+                case 2:
+                     dgvProducts.DataSource = null;
+                     Keyword = txtKeyword.Text.Trim();
+                     if (Keyword.Length >= 1)
+                     {
+                        FillProductsTable(5);
+                     }
+                    break;
+                case 3: break; //Nothing
+                case 4: break; //By date.
+                default: goto case 0;
+
+            }
+        }
+        private void btnReset_Click(object sender, EventArgs e) //TODO: Filtra automaticamente por presentacion.
+        {
+            dgvProducts.DataSource = null;
+            FillProductsTable(0);
+
+            txtKeyword.Text = "";
+            cbUnitType.SelectedIndex = 0;
+            cbSearchType.SelectedIndex = 0;
+
+        }
+
         private void ConfigureTable(DataGridView dgv)
         {
             dgv.Columns[6].Visible = false;
@@ -142,7 +257,7 @@ namespace atahualpa_ferresys.Forms.Product
         private void ManageLabel(string str)
         {
             lblMessage.Text = str;
-            if(dgvProducts.Rows.Count <= 0)
+            if (dgvProducts.Rows.Count <= 0)
             {
                 lblMessage.Visible = true;
             }
@@ -152,132 +267,9 @@ namespace atahualpa_ferresys.Forms.Product
             }
         }
 
-        private void frmProductList_Load(object sender, EventArgs e)
-        {
-            ManageLabel("Cargando productos...");
-        }
-
         private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dgvProducts.CurrentRow.Selected = true;
-        }
-
-        private void FillSearchMode()
-        {
-            cbSearchType.DataSource = Tools.ProductSearchCriteria;
-        }
-        private async void FillUnitTypes()
-        {
-            try
-            {
-                List<UnitType> unitTypes = new List<UnitType>();
-                unitTypes = await _unitTypeService.GetUnitTypes();
-
-                cbUnitType.DataSource = unitTypes;
-                cbUnitType.DisplayMember = "Name";
-                cbUnitType.ValueMember = "Id";
-
-                UnitTypesLoaded = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}");
-            }
-        }
-
-        private void cbSearchT_IndexChanged(object sender, EventArgs e)
-        {
-            switch (cbSearchType.SelectedIndex)
-            {
-                case 0: //By Name
-                    txtKeyword.Enabled = true;
-                    cbUnitType.Enabled = false;
-                    dtpDate.Enabled = false;
-                    break;
-                case 1: //By Description
-                    goto case 0;
-                case 2: //By Id
-                    goto case 0;
-                case 3: //By presentation
-                    txtKeyword.Enabled = false;
-                    cbUnitType.Enabled = true;
-                    dtpDate.Enabled = false;
-                    break;
-                case 4: //By date
-                    txtKeyword.Enabled = false;
-                    cbUnitType.Enabled = false;
-                    dtpDate.Enabled = true;
-                    break;
-                default: goto case 0;
-
-            }
-
-        }
-
-        private void txtKeyw_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            switch (cbSearchType.SelectedIndex)
-            {
-                case 0:
-                    Keyword = txtKeyword.Text.Trim();
-                    if(Keyword == "") { btnReset.PerformClick(); }
-                    else
-                    {
-                        dgvProducts.DataSource = null;
-                        FillProductsTable(1);
-                    }
-                    break;
-                case 1:
-                    Keyword = txtKeyword.Text.Trim();
-                    if (Keyword == "") { btnReset.PerformClick(); }
-                    else
-                    {
-                        dgvProducts.DataSource = null;
-                        FillProductsTable(2);
-                    }
-                    break;
-                case 2:
-                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) { e.Handled = true; }
-                    else
-                    {
-                        BeginInvoke((Action)(() =>
-                        {
-                            dgvProducts.DataSource = null;
-                            Keyword = txtKeyword.Text.Trim();
-                            if (Keyword.Length >= 1)
-                            {
-                                FillProductsTable(5);
-                            }
-                        }));
-                    }
-                    break;
-                case 3: break; //Nothing
-                case 4: break; //By date.
-                default: goto case 0;
-
-            }
-        }
-
-        private void cbUnitT_IndexChanged(object sender, EventArgs e)
-        {
-            if (UnitTypesLoaded)
-            {
-                SelectedUnitType = Int32.Parse(cbUnitType.SelectedValue.ToString());
-                FillProductsTable(4);
-            }
-        }
-
-        private void btnReset_Click(object sender, EventArgs e) //TODO: Filtra automaticamente por presentacion.
-        {
-            dgvProducts.DataSource = null;
-            //cbUnitType.DataSource = null; -->TODO: Crashea al ejecutar IndexChanged (cbUnitType)
-            FillProductsTable(0);
-            FillUnitTypes();
-
-            txtKeyword.Text = "";
-            cbUnitType.SelectedIndex = 0;
-            cbSearchType.SelectedIndex = 0;
-            
         }
     }
 }
