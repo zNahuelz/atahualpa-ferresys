@@ -44,4 +44,10 @@ Route::group([
     'middleware' => SellerMiddleware::class
 ], function($router) {
     Route::get('/', [SupplierController::class, 'getSuppliers']);
+    Route::get('/{id}', [SupplierController::class, 'getSupplier']);
+    Route::get('/by_ruc/{ruc}', [SupplierController::class, 'getSupplierByRUC']);
+    Route::get('/by_name/{name}', [SupplierController::class, 'getSupplierByName']);
+    Route::get('/by_email/{email}', [SupplierController::class, 'getSupplierByEmail']);
+    Route::put('/{id}', [SupplierController::class, 'updateSupplier']);
+    Route::delete('/{id}',[SupplierController::class, 'deleteSupplier']);
 });

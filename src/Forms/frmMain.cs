@@ -15,8 +15,7 @@ namespace atahualpa_ferresys.Forms
 {
     public partial class frmMain : Form
     {
-        private frmProducts frmProductos;
-        private Proveedores frmProveedores;
+        private frmSuppliers SuppliersForm;
         private Comprobantes frmComprobantes;
         private Clientes frmClientes;
         private frmProductList ProductListForm;
@@ -49,91 +48,37 @@ namespace atahualpa_ferresys.Forms
 
         private void btnProductos_Click(object sender, EventArgs e){ //AbrirFormularios(0);
                                                                      }
-        private void btnProveedores_Click(object sender, EventArgs e) { AbrirFormularios(1); }
-        private void btnComprobantes_Click(object sender, EventArgs e) { AbrirFormularios(2); }
-        private void btnClientes_Click(object sender, EventArgs e){ AbrirFormularios(3); }
+        private void btnProveedores_Click(object sender, EventArgs e) { OpenForm(ref SuppliersForm, (s, ev) => CloseForm(ref SuppliersForm, s, ev)); }
+        private void btnComprobantes_Click(object sender, EventArgs e) {  }
+        private void btnClientes_Click(object sender, EventArgs e){  }
 
 
-        private void AbrirFormularios(int c)
+        private void OpenForm<T>(ref T formInstance, FormClosedEventHandler formClosedHandler) where T : Form, new()
         {
-            switch (c)
+            if (formInstance == null)
             {
-                case 0:
-                    if(frmProductos == null)
-                    {
-                        frmProductos = new frmProducts();
-                        frmProductos.MdiParent = this;
-                        frmProductos.FormClosed += new FormClosedEventHandler(CerrarProductos);
-                        frmProductos.Show();
-                    }
-                    break;
-                case 1:
-                    if(frmProveedores == null)
-                    {
-                        frmProveedores = new Proveedores();
-                        frmProveedores.MdiParent = this;
-                        frmProveedores.FormClosed += new FormClosedEventHandler(CerrarProveedores);
-                        frmProveedores.Show();
-                    }
-                    break;
-                case 2:
-                    if(frmComprobantes == null)
-                    {
-                        frmComprobantes = new Comprobantes();
-                        frmComprobantes.MdiParent = this;
-                        frmComprobantes.FormClosed += new FormClosedEventHandler(CerrarComprobantes);
-                        frmComprobantes.Show();
-                    }
-                    break;
-                case 3:
-                    if (frmClientes == null)
-                    {
-                        frmClientes = new Clientes();
-                        frmClientes.MdiParent = this;
-                        frmClientes.FormClosed += new FormClosedEventHandler(CerrarClientes);
-                        frmClientes.Show();
-                    }
-                    break;
-                default: break;
+                formInstance = new T
+                {
+                    MdiParent = this
+                };
+                formInstance.FormClosed += formClosedHandler;
+                formInstance.Show();
             }
         }
 
-        private void OpenForm(int o)
+        private void CloseForm<T>(ref T formInstance, object sender, FormClosedEventArgs eventArgs) where T : Form
         {
-            switch (o)
-            {
-                case 0:
-                    if(ProductListForm == null)
-                    {
-                        ProductListForm = new frmProductList();
-                        ProductListForm.MdiParent = this;
-                        ProductListForm.FormClosed += new FormClosedEventHandler(CloseProductListForm);
-                        ProductListForm.Show();
-                    }
-                    break;
-                case 1:
-                    if (ProductManagementForm == null)
-                    {
-                        ProductManagementForm = new frmProductManagement();
-                        ProductManagementForm.MdiParent = this;
-                        ProductManagementForm.FormClosed += new FormClosedEventHandler(CloseProductManagementForm);
-                        ProductManagementForm.Show();
-                    }
-                    break;
-                default: break;
-            }
+            formInstance = null;
         }
 
-        private void CerrarProductos(object sender, FormClosedEventArgs e) { frmProductos = null; }
-        private void CerrarProveedores(object sender, FormClosedEventArgs e) { frmProveedores = null; }
-        private void CerrarComprobantes(object sender, FormClosedEventArgs e) { frmComprobantes = null; }
-        private void CerrarClientes(object sender, FormClosedEventArgs e) { frmClientes = null; }
+        private void lISTADOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenForm(ref ProductListForm, (s, ev) => CloseForm(ref ProductListForm, s, ev));
+        }
 
-        private void CloseProductListForm(object sender, FormClosedEventArgs e) { ProductListForm = null; }
-        private void CloseProductManagementForm(object sender, FormClosedEventArgs e) { ProductManagementForm = null; }
-
-        private void lISTADOToolStripMenuItem_Click(object sender, EventArgs e){ OpenForm(0); }
-
-        private void gESTIONARToolStripMenuItem_Click(object sender, EventArgs e){ OpenForm(1); }
+        private void gESTIONARToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenForm(ref ProductManagementForm, (s, ev) => CloseForm(ref ProductManagementForm, s, ev));
+        }
     }
 }

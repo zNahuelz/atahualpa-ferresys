@@ -74,6 +74,17 @@ namespace atahualpa_ferresys.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _3592821_garbage_can_general_office_recycle_bin_rubbish_bin_trash_bin_trash_can_107760__2_ {
+            get {
+                object obj = ResourceManager.GetObject("3592821-garbage-can-general-office-recycle-bin-rubbish-bin-trash-bin-trash-can_10" +
+                        "7760 (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_refresh_15732 {
             get {
                 object obj = ResourceManager.GetObject("arrow_refresh_15732", resourceCulture);

@@ -43,7 +43,7 @@ class ProductController extends Controller
 
         $product = Product::create([
             'name' => trim(strtoupper($request->name)),
-            'descripcion' => trim($request->description),
+            'description' => trim($request->description),
             'buy_price' => $request->buy_price,
             'sell_price' => $request->sell_price,
             'stock' => $request->stock,
@@ -78,7 +78,7 @@ class ProductController extends Controller
 
         $oldProduct->update([
             'name' => trim(strtoupper($request->name)),
-            'descripcion' => trim($request->description),
+            'description' => trim($request->description),
             'buy_price' => $request->buy_price,
             'sell_price' => $request->sell_price,
             'stock' => $request->stock,

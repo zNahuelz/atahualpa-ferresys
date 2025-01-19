@@ -19,6 +19,11 @@ namespace atahualpa_ferresys.Utils
             "POR NOMBRE","POR DESCRIPCIÓN","POR ID","POR PRESENTACIÓN","POR FECHA DE INGRESO"
         };
 
+        public static List<string> SupplierSearchCriteria = new List<string>()
+        {
+            "POR ID","POR RUC","POR NOMBRE","POR EMAIL"
+        };
+
         public static double TryParseDouble(string str)
         {
             if (Double.TryParse(str, out double result))

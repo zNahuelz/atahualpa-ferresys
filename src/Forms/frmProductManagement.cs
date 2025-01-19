@@ -144,9 +144,10 @@ namespace atahualpa_ferresys.Forms
                 {
                     var createProduct = await _productService.CreateProduct(product);
                     MessageBox.Show("Producto creado con éxito.","INFORMACIÓN",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                    btnRefreshProducts.PerformClick();
                     btnSaveProduct.Enabled = true;
                     btnClearSvF.Enabled = true;
+                    btnRefreshProducts.PerformClick();
+                    btnClearSvF.PerformClick();
                 }
                 catch (Exception ex) 
                 { 
@@ -198,6 +199,7 @@ namespace atahualpa_ferresys.Forms
                     btnRefreshProducts.PerformClick();
                     btnUpdate.Enabled = true;
                     btnClearUpF.Enabled = true;
+                    btnDelete.Enabled = true;
                 }
             }
             else
