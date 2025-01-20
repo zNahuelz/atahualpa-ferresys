@@ -20,26 +20,10 @@ class ProductController extends Controller
             'buy_price' => ['required','numeric','regex:/^\d+(\.\d{1,2})?$/'],
             'sell_price' => ['required','numeric','regex:/^\d+(\.\d{1,2})?$/'],
             'stock' => ['required','numeric'],
-            'supplier_id' => ['required','numeric'],
-            'unit_type_id' => ['required','numeric'],
+            'supplier_id' => ['required','numeric','exists:suppliers,id'],
+            'unit_type_id' => ['required','numeric','exists:unit_types,id'],
             'visible' => ['required','boolean']
         ]);
-        $supplier = Supplier::find($request->supplier_id);
-        $unitType = UnitType::find($request->unit_type_id);
-
-        if(!$supplier)
-        {
-            return response()->json([
-                'message' => 'Error! No se encontro el proveedor de ID: '.$request->supplier_id
-            ],422);
-        }
-
-        if(!$unitType)
-        {
-            return response()->json([
-                'message' => 'Error! No se encontro el tipo de unidad de ID: '.$request->unit_type_id
-            ],422);
-        }
 
         $product = Product::create([
             'name' => trim(strtoupper($request->name)),
@@ -54,7 +38,7 @@ class ProductController extends Controller
 
         return response()->json([
             'message' => 'Producto creado con exito.',
-            'producto' => $product
+            'product' => $product
         ],201);
     }
 

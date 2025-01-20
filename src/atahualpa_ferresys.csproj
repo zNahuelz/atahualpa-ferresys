@@ -265,6 +265,7 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Validation\ProductValidator.cs" />
     <Compile Include="Entities\Validation\SupplierValidator.cs" />
+    <Compile Include="Entities\Validation\UnitTypeValidator.cs" />
     <Compile Include="Entities\Voucher.cs" />
     <Compile Include="Entities\VoucherDetail.cs" />
     <Compile Include="Entities\VoucherType.cs" />
@@ -285,6 +286,12 @@
     </Compile>
     <Compile Include="Forms\frmProductManagement.Designer.cs">
       <DependentUpon>frmProductManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmUnitType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUnitType.Designer.cs">
+      <DependentUpon>frmUnitType.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
@@ -364,6 +371,9 @@
     <EmbeddedResource Include="Forms\frmProductManagement.resx">
       <DependentUpon>frmProductManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUnitType.resx">
+      <DependentUpon>frmUnitType.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -425,6 +435,7 @@
       <DependentUpon>AtahualpaModel.edmx</DependentUpon>
       <LastGenOutput>AtahualpaModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\computer_database.png" />
     <None Include="Resources\3592821-garbage-can-general-office-recycle-bin-rubbish-bin-trash-bin-trash-can_107760 %282%29.png" />
     <None Include="Resources\3592821-garbage-can-general-office-recycle-bin-rubbish-bin-trash-bin-trash-can_107760.png" />
     <None Include="Resources\saveall_1204.png" />

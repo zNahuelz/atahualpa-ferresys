@@ -63,16 +63,16 @@ namespace atahualpa_ferresys.Services
 
         public async Task<HttpResponseMessage> CreateSupplier(Supplier supplier)
         {
-            string jsonProduct = supplier.ToJSON();
-            var body = new StringContent(jsonProduct, Encoding.UTF8, "application/json");
+            string jsonSupplier = supplier.ToJSON();
+            var body = new StringContent(jsonSupplier, Encoding.UTF8, "application/json");
             var response = await _httpClient.PostAsync("supplier", body);
             return response;
         }
 
         public async Task<HttpResponseMessage> UpdateSupplier(Supplier supplier, int id)
         {
-            string jsonProduct = supplier.ToJSON();
-            var body = new StringContent(jsonProduct, Encoding.UTF8, "application/json");
+            string jsonSupplier = supplier.ToJSON();
+            var body = new StringContent(jsonSupplier, Encoding.UTF8, "application/json");
             var response = await _httpClient.PutAsync($"supplier/{id}", body);
             return response;
         }

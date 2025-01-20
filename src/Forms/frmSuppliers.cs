@@ -260,5 +260,63 @@ namespace atahualpa_ferresys.Forms
             }
         }
 
+        private void txtN_RUC_TextChanged(object sender, EventArgs e) {  } //Nothing.
+        private void txtN_Phone_TextChanged(object sender, EventArgs e) {  }
+        private void txtN_RUC_KeyPress(object sender, KeyPressEventArgs e) { EnableDigits(sender, e); }
+        private void txtN_Phone_KeyPress(object sender, KeyPressEventArgs e) { EnableDigits(sender, e); }
+
+        private void btnN_Clear_Click(object sender, EventArgs e)
+        {
+            foreach(Control c in gbNewSupplier.Controls)
+            {
+                if(c.GetType() == typeof(TextBox))
+                {
+                    c.Text = "";
+                }
+            }
+        }
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+            btnSave.Enabled = false;
+            btnN_Clear.Enabled = false;
+            Supplier supplier = new Supplier(
+                txtN_Name.Text,
+                txtN_RUC.Text,
+                txtN_Address.Text,
+                txtN_Phone.Text,
+                txtN_Email.Text,
+                txtN_Desc.Text,
+                true
+            );
+            if (txtN_Desc.Text.Length <= 3) { supplier.Description = "PROVEEDOR GENERAL"; }
+            SupplierValidator validator = new SupplierValidator();
+            FluentValidation.Results.ValidationResult results = validator.Validate(supplier);
+            if (results.IsValid)
+            {
+                try
+                {
+                    var createSupplier = await _supplierService.CreateSupplier(supplier);
+                    MessageBox.Show("Proveedor creado con éxito.", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnSave.Enabled = true;
+                    btnN_Clear.Enabled = true;
+                    btnN_Clear.PerformClick();
+                    btnU_Refresh.PerformClick();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error interno del servidor, favor comunicarse con administración: {ex.Message}", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    btnU_Refresh.PerformClick();
+                    btnSave.Enabled = true;
+                    btnN_Clear.Enabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show($"Error! Debe llenar el formulario correctamente:\n {results.ToString()}", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                btnSave.Enabled = true;
+                btnN_Clear.Enabled = true;
+            }
+        }
     }
 }

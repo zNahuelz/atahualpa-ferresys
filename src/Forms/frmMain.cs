@@ -20,6 +20,7 @@ namespace atahualpa_ferresys.Forms
         private Clientes frmClientes;
         private frmProductList ProductListForm;
         private frmProductManagement ProductManagementForm;
+        private frmUnitType UnitTypesForm;
         public frmMain()
         {
             InitializeComponent();
@@ -79,6 +80,11 @@ namespace atahualpa_ferresys.Forms
         private void gESTIONARToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenForm(ref ProductManagementForm, (s, ev) => CloseForm(ref ProductManagementForm, s, ev));
+        }
+
+        private void btnUnitTypes_Click(object sender, EventArgs e)
+        {
+            OpenForm(ref UnitTypesForm, (s, ev) => CloseForm(ref UnitTypesForm, s, ev));
         }
     }
 }

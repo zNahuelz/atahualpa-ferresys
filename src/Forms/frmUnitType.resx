@@ -117,26 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="3592821-garbage-can-general-office-recycle-bin-rubbish-bin-trash-bin-trash-can_107760" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\3592821-garbage-can-general-office-recycle-bin-rubbish-bin-trash-bin-trash-can_107760.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="saveall_1204" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\saveall_1204.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arrow_refresh_15732" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrow_refresh_15732.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="3592821-garbage-can-general-office-recycle-bin-rubbish-bin-trash-bin-trash-can_107760 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\3592821-garbage-can-general-office-recycle-bin-rubbish-bin-trash-bin-trash-can_107760 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo_transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo_transparent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo_transparent1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo_transparent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="computer_database" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\computer_database.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEADBAAAAEACAAOBQAAFgAAACgAAAAMAAAAIAAAAAEACAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAXU4xAIJ3YQCkm4wAq6OVAKyklgCmno4AhXlkAFlJKwCelYQAy8a9ALq0qAC7takAzMi/AKKZ
+        iABYSSsAcGNKANvY0gCdlYMAXE0wAFJBIgCdk4IA2tfSAIB1XgDMyL8Ac2ZNAIF1XwDIw7oAalxCAGla
+        QQB/cl0Af3NeAGxeRQB6bVYAn5aGAKGYigDY1M8A6ujlALOsnwCjmosAem5WAFhJLAByZU0AvrivAN7b
+        1gB6blgAVkcqAGFTNwC0raIAzsnCAGRVOgCAdF8A0c3HAPDu7ACMgm4AlIp5AKScjQCXjn0AqqKUAIl+
+        awCZj34Aa15EAMS/twDp5+MAcWRMAFhIKwCLgG0AzsrEAPf29ACbk4IAVkYpAFxNMQCJfmwAw721AMrG
+        vwCTiXcAW00xAFhIKwBpXEIAhntnAJeNfADq6eYA7uzpAPv7+gD8/PwA2NTQAPj39gD///8A/v7+APn5
+        +ADU0MsA4N7aAP39/QD8+/sA1M/KAOHe2wD39vUA+/r6APX08gDx8O4A8fDtAP39/ADTz8oAsqugAJ2U
+        gwB+clwAkol2AKmikwDl494ArqebAGNVOgChmYgAi4BtANzZ0wCxqpwA3trVAPz8+wDTz8kArqaaAJGH
+        dACOg28Aal1DAKefkACUingAxcC2AMrFvwDHwroA6ObiANnVzwDTz8cA1tLLANbTzgDp5+UA+vn5ANbS
+        zQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAABNTk9QUE9OTQAAAEdISVpaWoZKS0wAQUJDWlqDhIVYREVGPT5afX5/gIGCYD9AO3Vadnd4
+        eXp7fHQ8OWZabW5vcHFyc3Q6N2ZaZ2hoaWprbGA4MzReX2BhYmNkZTU2LzBaW1xXV1dXXTEyKSorVVZX
+        V1hZLC0uACEiIyRTVCUmJygAABobHB0eHyAcGxoAABcYGQAAAAAZGBcAABAREhMUFBMVFhAAAAgJUQoL
+        DA1SDg8AAAABAgMEBQYHAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+</value>
   </data>
 </root>

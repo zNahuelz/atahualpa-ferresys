@@ -36,9 +36,11 @@
             this.btnProductos = new System.Windows.Forms.ToolStripDropDownButton();
             this.lISTADOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gESTIONARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnClientes = new System.Windows.Forms.ToolStripButton();
             this.btnProveedores = new System.Windows.Forms.ToolStripButton();
+            this.btnClientes = new System.Windows.Forms.ToolStripButton();
             this.btnComprobantes = new System.Windows.Forms.ToolStripButton();
+            this.btnTools = new System.Windows.Forms.ToolStripDropDownButton();
+            this.btnUnitTypes = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.lblHora = new System.Windows.Forms.ToolStripLabel();
             this.btnUsuario = new System.Windows.Forms.ToolStripDropDownButton();
@@ -58,9 +60,10 @@
             this.btnNuevaVenta,
             this.toolStripSeparator1,
             this.btnProductos,
-            this.btnClientes,
             this.btnProveedores,
+            this.btnClientes,
             this.btnComprobantes,
+            this.btnTools,
             this.toolStripSeparator2,
             this.lblHora,
             this.btnUsuario});
@@ -105,28 +108,16 @@
             // lISTADOToolStripMenuItem
             // 
             this.lISTADOToolStripMenuItem.Name = "lISTADOToolStripMenuItem";
-            this.lISTADOToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.lISTADOToolStripMenuItem.Size = new System.Drawing.Size(155, 24);
             this.lISTADOToolStripMenuItem.Text = "LISTADO";
             this.lISTADOToolStripMenuItem.Click += new System.EventHandler(this.lISTADOToolStripMenuItem_Click);
             // 
             // gESTIONARToolStripMenuItem
             // 
             this.gESTIONARToolStripMenuItem.Name = "gESTIONARToolStripMenuItem";
-            this.gESTIONARToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.gESTIONARToolStripMenuItem.Size = new System.Drawing.Size(155, 24);
             this.gESTIONARToolStripMenuItem.Text = "GESTIONAR";
             this.gESTIONARToolStripMenuItem.Click += new System.EventHandler(this.gESTIONARToolStripMenuItem_Click);
-            // 
-            // btnClientes
-            // 
-            this.btnClientes.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnClientes.Image")));
-            this.btnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClientes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnClientes.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(187, 68);
-            this.btnClientes.Text = "CLIENTES";
-            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
             // btnProveedores
             // 
@@ -140,6 +131,18 @@
             this.btnProveedores.Text = "PROVEEDORES";
             this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
             // 
+            // btnClientes
+            // 
+            this.btnClientes.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnClientes.Image")));
+            this.btnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClientes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnClientes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.Size = new System.Drawing.Size(187, 68);
+            this.btnClientes.Text = "CLIENTES";
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
+            // 
             // btnComprobantes
             // 
             this.btnComprobantes.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -151,6 +154,26 @@
             this.btnComprobantes.Size = new System.Drawing.Size(187, 68);
             this.btnComprobantes.Text = "COMPROBANTES";
             this.btnComprobantes.Click += new System.EventHandler(this.btnComprobantes_Click);
+            // 
+            // btnTools
+            // 
+            this.btnTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnUnitTypes});
+            this.btnTools.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTools.Image = ((System.Drawing.Image)(resources.GetObject("btnTools.Image")));
+            this.btnTools.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTools.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnTools.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnTools.Name = "btnTools";
+            this.btnTools.Size = new System.Drawing.Size(187, 68);
+            this.btnTools.Text = "VARIOS";
+            // 
+            // btnUnitTypes
+            // 
+            this.btnUnitTypes.Name = "btnUnitTypes";
+            this.btnUnitTypes.Size = new System.Drawing.Size(184, 22);
+            this.btnUnitTypes.Text = "PRESENTACIONES";
+            this.btnUnitTypes.Click += new System.EventHandler(this.btnUnitTypes_Click);
             // 
             // toolStripSeparator2
             // 
@@ -247,5 +270,7 @@
         private System.Windows.Forms.ToolStripDropDownButton btnProductos;
         private System.Windows.Forms.ToolStripMenuItem lISTADOToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gESTIONARToolStripMenuItem;
+        private System.Windows.Forms.ToolStripDropDownButton btnTools;
+        private System.Windows.Forms.ToolStripMenuItem btnUnitTypes;
     }
 }

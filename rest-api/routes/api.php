@@ -36,13 +36,18 @@ Route::group([
     'prefix' => '/unit_type',
     'middleware' => SellerMiddleware::class
 ], function($router){
+    Route::post('/', [UnitTypeController::class, 'createUnitType']);
+    Route::put('/{id}', [UnitTypeController::class, 'updateUnitType']);
     Route::get('/', [UnitTypeController::class, 'getUnitTypes']);
+    Route::get('/{id}', [UnitTypeController::class, 'getUnitType']);
+    Route::get('/by_name/{name}', [UnitTypeController::class, 'getUnitTypeByName']);
 });
 
 Route::group([
     'prefix' => '/supplier',
     'middleware' => SellerMiddleware::class
 ], function($router) {
+    Route::post('/',[SupplierController::class,'createSupplier']);
     Route::get('/', [SupplierController::class, 'getSuppliers']);
     Route::get('/{id}', [SupplierController::class, 'getSupplier']);
     Route::get('/by_ruc/{ruc}', [SupplierController::class, 'getSupplierByRUC']);

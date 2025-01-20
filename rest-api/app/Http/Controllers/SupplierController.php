@@ -9,10 +9,31 @@ use Illuminate\Validation\Rule;
 
 class SupplierController extends Controller
 {
-    public function getSuppliers()
+
+    public function createSupplier(Request $request)
     {
-        $suppliers = Supplier::all();
-        return response()->json($suppliers);
+        $request->validate([
+            'name' => ['required','string','min:2','max:150'],
+            'ruc' => ['required','string','min:11','max:11',Rule::unique('suppliers','ruc')],
+            'address' => ['required','max:100'],
+            'phone' => ['required','string','min:6','max:15'],
+            'email' => ['required','email','max:50'],
+            'description' => ['string','max:150'],
+        ]);
+
+        $supplier = Supplier::create([
+            'name' => trim(strtoupper($request->name)),
+            'ruc' => trim($request->ruc),
+            'address' => trim($request->address),
+            'phone' => trim($request->phone),
+            'email' => trim(strtoupper($request->email)),
+            'description' => trim($request->description),
+        ]);
+
+        return response()->json([
+            'message' => 'Proveedor creado con exito.',
+            'supplier' => $supplier
+        ],201);
     }
 
     public function updateSupplier(Request $request, $id)
@@ -54,6 +75,12 @@ class SupplierController extends Controller
         }
         $supplier->delete();
         return response()->json(['message' => 'Proveedor de ID: '.$id.' eliminado correctamente.']);          
+    }
+
+    public function getSuppliers()
+    {
+        $suppliers = Supplier::all();
+        return response()->json($suppliers);
     }
 
     public function getSupplier($id)
