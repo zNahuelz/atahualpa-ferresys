@@ -30,27 +30,27 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUnitType));
             this.gbMain = new System.Windows.Forms.GroupBox();
-            this.gbNew = new System.Windows.Forms.GroupBox();
-            this.gbTools = new System.Windows.Forms.GroupBox();
             this.dgvUnitTypes = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtN_Name = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.gbNew = new System.Windows.Forms.GroupBox();
             this.btnN_Clear = new System.Windows.Forms.Button();
-            this.btnU_Clear = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.txtU_Name = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.txtN_Name = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.gbTools = new System.Windows.Forms.GroupBox();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtKeyword = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnU_Clear = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtU_Name = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gbMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUnitTypes)).BeginInit();
             this.gbNew.SuspendLayout();
             this.gbTools.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUnitTypes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,6 +64,20 @@
             this.gbMain.TabStop = false;
             this.gbMain.Text = "LISTADO";
             // 
+            // dgvUnitTypes
+            // 
+            this.dgvUnitTypes.AllowUserToAddRows = false;
+            this.dgvUnitTypes.AllowUserToDeleteRows = false;
+            this.dgvUnitTypes.BackgroundColor = System.Drawing.SystemColors.Info;
+            this.dgvUnitTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUnitTypes.GridColor = System.Drawing.Color.HotPink;
+            this.dgvUnitTypes.Location = new System.Drawing.Point(6, 21);
+            this.dgvUnitTypes.Name = "dgvUnitTypes";
+            this.dgvUnitTypes.ReadOnly = true;
+            this.dgvUnitTypes.Size = new System.Drawing.Size(638, 710);
+            this.dgvUnitTypes.TabIndex = 2;
+            this.dgvUnitTypes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUnitTypes_CellClick);
+            // 
             // gbNew
             // 
             this.gbNew.Controls.Add(this.btnN_Clear);
@@ -76,6 +90,43 @@
             this.gbNew.TabIndex = 1;
             this.gbNew.TabStop = false;
             this.gbNew.Text = "NUEVA";
+            // 
+            // btnN_Clear
+            // 
+            this.btnN_Clear.Location = new System.Drawing.Point(45, 139);
+            this.btnN_Clear.Name = "btnN_Clear";
+            this.btnN_Clear.Size = new System.Drawing.Size(166, 44);
+            this.btnN_Clear.TabIndex = 3;
+            this.btnN_Clear.Text = "LIMPIAR";
+            this.btnN_Clear.UseVisualStyleBackColor = true;
+            this.btnN_Clear.Click += new System.EventHandler(this.btnN_Clear_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(45, 89);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(166, 44);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "GUARDAR";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // txtN_Name
+            // 
+            this.txtN_Name.Location = new System.Drawing.Point(9, 53);
+            this.txtN_Name.MaxLength = 100;
+            this.txtN_Name.Name = "txtN_Name";
+            this.txtN_Name.Size = new System.Drawing.Size(389, 22);
+            this.txtN_Name.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "NOMBRE";
             // 
             // gbTools
             // 
@@ -95,56 +146,51 @@
             this.gbTools.TabStop = false;
             this.gbTools.Text = "HERRAMIENTAS";
             // 
-            // dgvUnitTypes
+            // btnRefresh
             // 
-            this.dgvUnitTypes.AllowUserToAddRows = false;
-            this.dgvUnitTypes.AllowUserToDeleteRows = false;
-            this.dgvUnitTypes.BackgroundColor = System.Drawing.SystemColors.Info;
-            this.dgvUnitTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUnitTypes.GridColor = System.Drawing.Color.HotPink;
-            this.dgvUnitTypes.Location = new System.Drawing.Point(6, 21);
-            this.dgvUnitTypes.Name = "dgvUnitTypes";
-            this.dgvUnitTypes.ReadOnly = true;
-            this.dgvUnitTypes.Size = new System.Drawing.Size(638, 710);
-            this.dgvUnitTypes.TabIndex = 2;
-            this.dgvUnitTypes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUnitTypes_CellClick);
+            this.btnRefresh.Image = global::atahualpa_ferresys.Properties.Resources.arrow_refresh_15732;
+            this.btnRefresh.Location = new System.Drawing.Point(243, 90);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(64, 94);
+            this.btnRefresh.TabIndex = 10;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
-            // label1
+            // btnSearch
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "NOMBRE";
+            this.btnSearch.Location = new System.Drawing.Point(256, 220);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(142, 23);
+            this.btnSearch.TabIndex = 11;
+            this.btnSearch.Text = "BUSCAR";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // txtN_Name
+            // label3
             // 
-            this.txtN_Name.Location = new System.Drawing.Point(9, 53);
-            this.txtN_Name.MaxLength = 100;
-            this.txtN_Name.Name = "txtN_Name";
-            this.txtN_Name.Size = new System.Drawing.Size(389, 22);
-            this.txtN_Name.TabIndex = 1;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 201);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 16);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "NOMBRE ó ID";
             // 
-            // btnSave
+            // txtKeyword
             // 
-            this.btnSave.Location = new System.Drawing.Point(45, 89);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(166, 44);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "GUARDAR";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.txtKeyword.Location = new System.Drawing.Point(9, 220);
+            this.txtKeyword.MaxLength = 100;
+            this.txtKeyword.Name = "txtKeyword";
+            this.txtKeyword.Size = new System.Drawing.Size(241, 22);
+            this.txtKeyword.TabIndex = 10;
             // 
-            // btnN_Clear
+            // btnDelete
             // 
-            this.btnN_Clear.Location = new System.Drawing.Point(45, 139);
-            this.btnN_Clear.Name = "btnN_Clear";
-            this.btnN_Clear.Size = new System.Drawing.Size(166, 44);
-            this.btnN_Clear.TabIndex = 3;
-            this.btnN_Clear.Text = "LIMPIAR";
-            this.btnN_Clear.UseVisualStyleBackColor = true;
-            this.btnN_Clear.Click += new System.EventHandler(this.btnN_Clear_Click);
+            this.btnDelete.Image = global::atahualpa_ferresys.Properties.Resources._3592821_garbage_can_general_office_recycle_bin_rubbish_bin_trash_bin_trash_can_107760;
+            this.btnDelete.Location = new System.Drawing.Point(313, 90);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(64, 94);
+            this.btnDelete.TabIndex = 8;
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // btnU_Clear
             // 
@@ -166,14 +212,6 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // txtU_Name
-            // 
-            this.txtU_Name.Location = new System.Drawing.Point(9, 52);
-            this.txtU_Name.MaxLength = 100;
-            this.txtU_Name.Name = "txtU_Name";
-            this.txtU_Name.Size = new System.Drawing.Size(389, 22);
-            this.txtU_Name.TabIndex = 5;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -183,51 +221,13 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "NOMBRE";
             // 
-            // btnDelete
+            // txtU_Name
             // 
-            this.btnDelete.Image = global::atahualpa_ferresys.Properties.Resources._3592821_garbage_can_general_office_recycle_bin_rubbish_bin_trash_bin_trash_can_107760;
-            this.btnDelete.Location = new System.Drawing.Point(313, 90);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(64, 94);
-            this.btnDelete.TabIndex = 8;
-            this.btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Image = global::atahualpa_ferresys.Properties.Resources.arrow_refresh_15732;
-            this.btnRefresh.Location = new System.Drawing.Point(243, 90);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(64, 94);
-            this.btnRefresh.TabIndex = 10;
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 201);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 16);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "NOMBRE ó ID";
-            // 
-            // txtKeyword
-            // 
-            this.txtKeyword.Location = new System.Drawing.Point(9, 220);
-            this.txtKeyword.MaxLength = 100;
-            this.txtKeyword.Name = "txtKeyword";
-            this.txtKeyword.Size = new System.Drawing.Size(241, 22);
-            this.txtKeyword.TabIndex = 10;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(256, 220);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(142, 23);
-            this.btnSearch.TabIndex = 11;
-            this.btnSearch.Text = "BUSCAR";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.txtU_Name.Location = new System.Drawing.Point(9, 52);
+            this.txtU_Name.MaxLength = 100;
+            this.txtU_Name.Name = "txtU_Name";
+            this.txtU_Name.Size = new System.Drawing.Size(389, 22);
+            this.txtU_Name.TabIndex = 5;
             // 
             // pictureBox1
             // 
@@ -249,17 +249,18 @@
             this.Controls.Add(this.gbNew);
             this.Controls.Add(this.gbMain);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmUnitType";
             this.Text = "PRESENTACIONES - GESTIONAR";
             this.Load += new System.EventHandler(this.frmUnitType_Load);
             this.gbMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUnitTypes)).EndInit();
             this.gbNew.ResumeLayout(false);
             this.gbNew.PerformLayout();
             this.gbTools.ResumeLayout(false);
             this.gbTools.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUnitTypes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

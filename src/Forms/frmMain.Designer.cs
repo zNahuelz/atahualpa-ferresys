@@ -84,6 +84,7 @@
             this.btnNuevaVenta.Name = "btnNuevaVenta";
             this.btnNuevaVenta.Size = new System.Drawing.Size(187, 68);
             this.btnNuevaVenta.Text = "NUEVA VENTA";
+            this.btnNuevaVenta.Click += new System.EventHandler(this.btnNuevaVenta_Click);
             // 
             // toolStripSeparator1
             // 
@@ -159,7 +160,7 @@
             // 
             this.btnTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnUnitTypes});
-            this.btnTools.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTools.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.btnTools.Image = ((System.Drawing.Image)(resources.GetObject("btnTools.Image")));
             this.btnTools.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTools.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -171,7 +172,7 @@
             // btnUnitTypes
             // 
             this.btnUnitTypes.Name = "btnUnitTypes";
-            this.btnUnitTypes.Size = new System.Drawing.Size(184, 22);
+            this.btnUnitTypes.Size = new System.Drawing.Size(194, 24);
             this.btnUnitTypes.Text = "PRESENTACIONES";
             this.btnUnitTypes.Click += new System.EventHandler(this.btnUnitTypes_Click);
             // 

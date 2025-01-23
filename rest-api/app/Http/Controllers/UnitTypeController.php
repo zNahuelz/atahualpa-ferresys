@@ -29,7 +29,7 @@ class UnitTypeController extends Controller
         $oldUnitType = UnitType::find($id);
         if(!$oldUnitType)
         {
-            return response()->json(['message' => 'Presentación de ID: '.$id.' no encontrada.']);
+            return response()->json(['message' => 'Presentación de ID: '.$id.' no encontrada.'],404);
         }
 
         $request->validate([
@@ -40,7 +40,7 @@ class UnitTypeController extends Controller
             'name' => trim(strtoupper($request->name))
         ]);
 
-        return response()->json(['message' => 'Presentación de ID: '.$id.' actualizada con exito.']);
+        return response()->json(['message' => 'Presentación de ID: '.$id.' actualizada con exito.'],200);
     }
 
     public function getUnitTypes()

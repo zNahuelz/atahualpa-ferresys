@@ -95,6 +95,16 @@ namespace atahualpa_ferresys.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_refresh_157321 {
+            get {
+                object obj = ResourceManager.GetObject("arrow_refresh_157321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap computer_database {
             get {
                 object obj = ResourceManager.GetObject("computer_database", resourceCulture);
@@ -128,6 +138,16 @@ namespace atahualpa_ferresys.Properties {
         internal static System.Drawing.Bitmap saveall_1204 {
             get {
                 object obj = ResourceManager.GetObject("saveall_1204", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap xmag_search_find_export_locate_5984 {
+            get {
+                object obj = ResourceManager.GetObject("xmag_search_find_export_locate_5984", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

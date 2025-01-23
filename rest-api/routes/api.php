@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitTypeController;
@@ -34,7 +35,7 @@ Route::group([
 
 Route::group([
     'prefix' => '/unit_type',
-    'middleware' => SellerMiddleware::class
+    'middleware' => SellerMiddleware::class,
 ], function($router){
     Route::post('/', [UnitTypeController::class, 'createUnitType']);
     Route::put('/{id}', [UnitTypeController::class, 'updateUnitType']);
@@ -45,7 +46,7 @@ Route::group([
 
 Route::group([
     'prefix' => '/supplier',
-    'middleware' => SellerMiddleware::class
+    'middleware' => SellerMiddleware::class,
 ], function($router) {
     Route::post('/',[SupplierController::class,'createSupplier']);
     Route::get('/', [SupplierController::class, 'getSuppliers']);
@@ -55,4 +56,16 @@ Route::group([
     Route::get('/by_email/{email}', [SupplierController::class, 'getSupplierByEmail']);
     Route::put('/{id}', [SupplierController::class, 'updateSupplier']);
     Route::delete('/{id}',[SupplierController::class, 'deleteSupplier']);
+});
+
+Route::group([
+    'prefix' => '/customer',
+    'middleware' => SellerMiddleware::class,
+], function($router){
+    Route::post('/', [CustomerController::class, 'createCustomer']);
+    Route::get('/', [CustomerController::class, 'getCustomers']);
+    Route::get('/{id}', [CustomerController::class, 'getCustomer']);
+    Route::get('/by_dni/{dni}', [CustomerController::class, 'getCustomerByDNI']);
+    Route::put('/{id}', [CustomerController::class, 'updateCustomer']);
+    Route::delete('/{id}', [CustomerController::class, 'deleteCustomer']);
 });

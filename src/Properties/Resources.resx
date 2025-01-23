@@ -124,6 +124,9 @@
   <data name="saveall_1204" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\saveall_1204.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="xmag_search_find_export_locate_5984" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\xmag_search_find_export_locate_5984.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="arrow_refresh_15732" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow_refresh_15732.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -133,10 +136,13 @@
   <data name="logo_transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo_transparent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="computer_database" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\computer_database.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="logo_transparent1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo_transparent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="computer_database" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\computer_database.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="arrow_refresh_157321" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow_refresh_15732.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

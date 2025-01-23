@@ -17,10 +17,12 @@ namespace atahualpa_ferresys.Forms
     {
         private frmSuppliers SuppliersForm;
         private Comprobantes frmComprobantes;
-        private Clientes frmClientes;
+        private frmCustomers CustomersForm;
         private frmProductList ProductListForm;
         private frmProductManagement ProductManagementForm;
         private frmUnitType UnitTypesForm;
+        private frmSell SellForm;
+
         public frmMain()
         {
             InitializeComponent();
@@ -51,7 +53,7 @@ namespace atahualpa_ferresys.Forms
                                                                      }
         private void btnProveedores_Click(object sender, EventArgs e) { OpenForm(ref SuppliersForm, (s, ev) => CloseForm(ref SuppliersForm, s, ev)); }
         private void btnComprobantes_Click(object sender, EventArgs e) {  }
-        private void btnClientes_Click(object sender, EventArgs e){  }
+        private void btnClientes_Click(object sender, EventArgs e){ OpenForm(ref CustomersForm, (s, ev) => CloseForm(ref CustomersForm, s, ev));  }
 
 
         private void OpenForm<T>(ref T formInstance, FormClosedEventHandler formClosedHandler) where T : Form, new()
@@ -85,6 +87,11 @@ namespace atahualpa_ferresys.Forms
         private void btnUnitTypes_Click(object sender, EventArgs e)
         {
             OpenForm(ref UnitTypesForm, (s, ev) => CloseForm(ref UnitTypesForm, s, ev));
+        }
+
+        private void btnNuevaVenta_Click(object sender, EventArgs e)
+        {
+            OpenForm(ref SellForm, (s, ev) => CloseForm(ref SellForm, s, ev));
         }
     }
 }

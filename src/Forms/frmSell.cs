@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace atahualpa_ferresys.Forms
 {
-    public partial class Clientes : Form
+    public partial class frmSell : Form
     {
-        public Clientes()
+        public frmSell()
         {
             InitializeComponent();
         }

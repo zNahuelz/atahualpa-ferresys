@@ -263,17 +263,18 @@
     <Compile Include="Entities\Supplier.cs" />
     <Compile Include="Entities\UnitType.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\Validation\CustomerValidator.cs" />
     <Compile Include="Entities\Validation\ProductValidator.cs" />
     <Compile Include="Entities\Validation\SupplierValidator.cs" />
     <Compile Include="Entities\Validation\UnitTypeValidator.cs" />
     <Compile Include="Entities\Voucher.cs" />
     <Compile Include="Entities\VoucherDetail.cs" />
     <Compile Include="Entities\VoucherType.cs" />
-    <Compile Include="Forms\Clientes.cs">
+    <Compile Include="Forms\frmCustomers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Clientes.Designer.cs">
-      <DependentUpon>Clientes.cs</DependentUpon>
+    <Compile Include="Forms\frmCustomers.Designer.cs">
+      <DependentUpon>frmCustomers.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Comprobantes.cs">
       <SubType>Form</SubType>
@@ -286,6 +287,12 @@
     </Compile>
     <Compile Include="Forms\frmProductManagement.Designer.cs">
       <DependentUpon>frmProductManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSell.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSell.Designer.cs">
+      <DependentUpon>frmSell.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmUnitType.cs">
       <SubType>Form</SubType>
@@ -358,18 +365,22 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Services\UnitTypeService.cs" />
     <Compile Include="Utils\Tools.cs" />
-    <EmbeddedResource Include="Forms\Clientes.resx">
-      <DependentUpon>Clientes.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmCustomers.resx">
+      <DependentUpon>frmCustomers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Comprobantes.resx">
       <DependentUpon>Comprobantes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProductManagement.resx">
       <DependentUpon>frmProductManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSell.resx">
+      <DependentUpon>frmSell.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUnitType.resx">
       <DependentUpon>frmUnitType.cs</DependentUpon>
@@ -435,6 +446,7 @@
       <DependentUpon>AtahualpaModel.edmx</DependentUpon>
       <LastGenOutput>AtahualpaModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\xmag_search_find_export_locate_5984.png" />
     <None Include="Resources\computer_database.png" />
     <None Include="Resources\3592821-garbage-can-general-office-recycle-bin-rubbish-bin-trash-bin-trash-can_107760 %282%29.png" />
     <None Include="Resources\3592821-garbage-can-general-office-recycle-bin-rubbish-bin-trash-bin-trash-can_107760.png" />

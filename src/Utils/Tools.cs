@@ -25,6 +25,11 @@ namespace atahualpa_ferresys.Utils
             "POR ID","POR RUC","POR NOMBRE","POR EMAIL"
         };
 
+        public static List<string> CustomerSearchCriteria = new List<string>()
+        {
+            "POR DNI","POR ID"
+        };
+
         public static double TryParseDouble(string str)
         {
             if (Double.TryParse(str, out double result))
