@@ -85,6 +85,16 @@ namespace atahualpa_ferresys.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_icon_icons_com_74429 {
+            get {
+                object obj = ResourceManager.GetObject("add_icon-icons.com_74429", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_refresh_15732 {
             get {
                 object obj = ResourceManager.GetObject("arrow_refresh_15732", resourceCulture);
@@ -105,9 +115,59 @@ namespace atahualpa_ferresys.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_refresh_157322 {
+            get {
+                object obj = ResourceManager.GetObject("arrow_refresh_157322", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap businesspackage_additionalpackage_box_add_insert_negoci_2335 {
+            get {
+                object obj = ResourceManager.GetObject("businesspackage_additionalpackage_box_add_insert_negoci_2335", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap computer_database {
             get {
                 object obj = ResourceManager.GetObject("computer_database", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap delete_delete_exit_1577 {
+            get {
+                object obj = ResourceManager.GetObject("delete_delete_exit_1577", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap delete_icon_icons_com_74434 {
+            get {
+                object obj = ResourceManager.GetObject("delete_icon-icons.com_74434", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_validated256_25237 {
+            get {
+                object obj = ResourceManager.GetObject("edit-validated256_25237", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -148,6 +208,16 @@ namespace atahualpa_ferresys.Properties {
         internal static System.Drawing.Bitmap xmag_search_find_export_locate_5984 {
             get {
                 object obj = ResourceManager.GetObject("xmag_search_find_export_locate_5984", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap xmag_search_find_export_locate_59841 {
+            get {
+                object obj = ResourceManager.GetObject("xmag_search_find_export_locate_59841", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
 namespace atahualpa_ferresys.Utils
@@ -30,6 +31,11 @@ namespace atahualpa_ferresys.Utils
             "POR DNI","POR ID"
         };
 
+        public static List<string> SellFormSearchCriteria = new List<string>()
+        {
+            "POR ID","POR NOMBRE"
+        };
+
         public static double TryParseDouble(string str)
         {
             if (Double.TryParse(str, out double result))
@@ -51,6 +57,38 @@ namespace atahualpa_ferresys.Utils
         {
             return !string.IsNullOrEmpty(input) && Regex.IsMatch(input, @"^\d+$");
         }
+
+        public static void EnableDigits(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        public class ProductHelper
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public double Price { get; set; }
+            public int Stock { get; set; }
+            public string UnitTypeName { get; set; }
+            public int BuyAmount { get; set; }
+            public double Subtotal { get; set; }
+
+            public ProductHelper() { }
+            public ProductHelper(int id, string name, double price, int stock, string unitTypeName, int buyAmount)
+            {
+                Id = id;
+                Name = name;
+                Price = price;
+                Stock = stock;
+                UnitTypeName = unitTypeName;
+                BuyAmount = buyAmount;
+            }
+        }
     }
+
+
 
 }

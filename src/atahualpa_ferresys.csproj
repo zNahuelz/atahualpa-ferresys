@@ -270,6 +270,12 @@
     <Compile Include="Entities\Voucher.cs" />
     <Compile Include="Entities\VoucherDetail.cs" />
     <Compile Include="Entities\VoucherType.cs" />
+    <Compile Include="Forms\AddToCart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddToCart.Designer.cs">
+      <DependentUpon>AddToCart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmCustomers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -370,6 +376,9 @@
     <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Services\UnitTypeService.cs" />
     <Compile Include="Utils\Tools.cs" />
+    <EmbeddedResource Include="Forms\AddToCart.resx">
+      <DependentUpon>AddToCart.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCustomers.resx">
       <DependentUpon>frmCustomers.cs</DependentUpon>
     </EmbeddedResource>
@@ -446,6 +455,11 @@
       <DependentUpon>AtahualpaModel.edmx</DependentUpon>
       <LastGenOutput>AtahualpaModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\delete_icon-icons.com_74434.png" />
+    <None Include="Resources\add_icon-icons.com_74429.png" />
+    <None Include="Resources\edit-validated256_25237.png" />
+    <None Include="Resources\delete_delete_exit_1577.png" />
+    <None Include="Resources\businesspackage_additionalpackage_box_add_insert_negoci_2335.png" />
     <None Include="Resources\xmag_search_find_export_locate_5984.png" />
     <None Include="Resources\computer_database.png" />
     <None Include="Resources\3592821-garbage-can-general-office-recycle-bin-rubbish-bin-trash-bin-trash-can_107760 %282%29.png" />
